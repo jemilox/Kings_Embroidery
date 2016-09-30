@@ -2,10 +2,10 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded( {extended: true});
+var urlencodedParser = bodyParser.urlencoded( {extended: false});
 var portDecision = process.env.PORT || 3000;
 var pg = require('pg');
-//pg.defaults.ssl = true;
+var connectionString = 'postgress://localhost:5432/jobs';
 
 
 app.listen( portDecision, function () {
@@ -14,31 +14,34 @@ app.listen( portDecision, function () {
 
 app.get('/', urlencodedParser, function (req, res) {
   console.log('base url hit');
-  res.sendFile(path.resolve('public/index1.html'));
+  res.sendFile(path.resolve('public/index.html'));
 });
 
-app.post('/add', urlencodedParser, function (req, res) {
-  console.log('in post add');
-  res.send( 'true' );
+app.use(express.static('public'));
+
+app.get('/all', urlencodedParser, function (req, res) {
+  console.log('in get /all');
+  pg.connect(connectionString, function (err, client, done) {
+      if (err){
+        console.log(err);
+      }else{
+        var alljobs = [];
+        var queryResults = client.query('SELECT * FROM jobs');
+        console.log(queryResults);
+        queryResults.on('row', function (row) {
+          alljobs.push(row);
+          console.log('alljobs', alljobs[0]);
+          queryResults.on('end', function () {
+            done();
+             return res.json(alljobs);
+          });//end queryResults function
+        });//end queryResults on function
+      }//end else
+  });//end pg connect
+});//end app.get
+
+app.post('/newjob', urlencodedParser, function (req, res) {
+  console.log('in .post newjob');
+  console.log('req.body', req.body);
+  //create variables from req
 });
-
-//new copy/paste from heroku
-
-// app.post('/mow', urlencodedParser, function (req, res) {
-//   console.log('in add');
-//   pg.connect(process.env.postgresql-cubed-19933, function(err, client) {
-//     if (err) throw err;
-//     console.log('Connected to postgres! Getting schemas...');
-//
-//     client
-//       .query('SELECT * FROM jobs')
-//       .on('row', function(row) {
-//         console.log(JSON.stringify(row));
-//         res.send({success: true});
-//       });
-//   });
-//
-// });
-
-
-// app.use(express.static('public'));

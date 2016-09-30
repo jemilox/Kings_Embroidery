@@ -1,0 +1,65 @@
+.headerClass {
+  height: 10%;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+  display: flex;
+}
+
+html, body{
+  height: 100%;
+  background-color: grey;
+}
+
+footer {
+  height: 10%;
+}
+
+.day {
+  background-color: white;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: inherit;
+  margin: 5px;
+}
+
+.week {
+  height: inherit;
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.main {
+  background-color: pink;
+  height: 40vh;
+
+}
+.job {
+  flex-grow: 1;
+  background-color: beige;
+  margin: 5px;
+}
+.row {
+  margin: 0;
+}
+.firstjob {
+  margin-top: 6vh;
+}
+.kingsTitle {
+  padding: 0;
+  margin: 0;
+  width: 40vw;
+}
+h1 {
+  font-size: 3em;
+  padding: 0;
+  margin: 0;
+}
+.plus {
+  width: 40vw;
+  font-size: 3em;
+  text-align: right;
+}
