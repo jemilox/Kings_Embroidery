@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded( {extended: false});
 var portDecision = process.env.PORT || 3000;
 var pg = require('pg');
-var connectionString = 'postgress://localhost:5432/jobs';
+var connectionString = 'postgress://localhost:5432/jobstwo';
 
 
 app.listen( portDecision, function () {
@@ -43,5 +43,22 @@ app.get('/all', urlencodedParser, function (req, res) {
 app.post('/newjob', urlencodedParser, function (req, res) {
   console.log('in .post newjob');
   console.log('req.body', req.body);
+  var company = "ebay";
+  var duedate = "10-2-16";
+  var pieces = 10;
+  console.log(company, duedate, pieces);
+  pg.connect(connectionString, function (err, client, done) {
+      if (err){
+        console.log(err);
+      }else{
+        console.log('connected to database');
+        var queryResults = client.query('INSERT INTO jobs (company, pieces, duedate) VALUES($1, $2, $3)', [company, pieces, duedate]);
+        queryResults.on('end', function () {
+          done();
+          res.send({success: true});
+        });//end query
+      }//end else
+    });//end pg conect
+
   //create variables from req
 });
