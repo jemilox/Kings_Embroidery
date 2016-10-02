@@ -6,12 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/app.js",
-"dev": "nodemon server/app.js"
+    "dev": "nodemon server/app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "angular-router": "0.0.2",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "moment": "^2.15.1",

@@ -1,5 +1,5 @@
 .headerClass {
-  height: 10%;
+  flex-grow: 1;
   background-color: white;
   margin: 0;
   padding: 0;
@@ -10,6 +10,15 @@
 html, body{
   height: 100%;
   background-color: grey;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex-grow: 8;
 }
 
 footer {
