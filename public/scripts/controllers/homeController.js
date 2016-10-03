@@ -1,4 +1,7 @@
-myApp.controller('homeController', ['$scope', '$http', function ($scope, $http) {
+
+myApp.constant('moment', moment);
+
+myApp.controller('homeController', ['$scope', '$http', 'moment', function ($scope, $http, moment){
   console.log('in homeController');
 
 
@@ -15,6 +18,11 @@ myApp.controller('homeController', ['$scope', '$http', function ($scope, $http) 
         console.log('results.success', results.data);
         //array of alljobs from db
         $scope.alljobs = results.data;
+        $scope.alljobs = $scope.alljobs.map(function (index) {
+          var m = moment(index.duedate).format('MM DD YYYY');
+          return {company: index.company, duedate: m, pieces: index.pieces}
+        });//end map function
+        console.log($scope.alljobs);
 
       });//end then
     };//end getAll function
