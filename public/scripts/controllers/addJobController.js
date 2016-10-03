@@ -4,6 +4,8 @@ myApp.constant('moment', moment);
 myApp.controller('addJobController', ['$scope', '$http', 'moment', function ($scope, $http, moment) {
   console.log('in addJobController');
 
+  $scope.success = false;
+
   var m = moment();
   console.log(m);
 
@@ -27,7 +29,11 @@ myApp.controller('addJobController', ['$scope', '$http', 'moment', function ($sc
       console.log('made it to then');
       console.log('results.success', results.data.success);
       if (results.data.success){
+        $scope.job = objectToSend.company;
+        $scope.duedate = objectToSend.duedate;
+        $scope.pieces = objectToSend.pieces;
         $scope.success = true;
+
       }
     });
   };

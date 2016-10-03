@@ -1,3 +1,3 @@
-myApp.controller('addJobController', ['$scope', '$http', function ($scope, $http) {
-  console.log('in addJobController');
+myApp.controller('homeController', ['$scope', '$http', function ($scope, $http) {
+  console.log('in homeController');
 }]);

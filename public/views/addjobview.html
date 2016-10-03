@@ -12,7 +12,9 @@
       <input type="text" placeholder="# of Pieces" ng-model="pieces">
       <button ng-click="addjob()">Add Job</button>
       <div class="displaySuccess" ng-show="success">
-        <p>Job successfully added!</p>
+        <p>Job for {{job}} successfully added!<br>
+        Number of Pieces: {{pieces}}<br>
+        Due Date: {{duedate}}</p>
       </div>
     </div>
   </body>
