@@ -9,6 +9,9 @@ myApp.controller('addJobController', ['$scope', '$http', 'moment', function ($sc
   var m = moment();
   console.log(m);
 
+  var c =moment('2016-10-02T05:00:00.000Z').format('dddd');
+  console.log(c);
+
 
   $scope.addjob = function () {
     console.log('in addjob');

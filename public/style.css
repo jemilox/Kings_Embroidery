@@ -38,6 +38,7 @@ footer {
   flex-direction: column;
   width: inherit;
   margin: 5px;
+  overflow: auto;
 }
 
 .week {

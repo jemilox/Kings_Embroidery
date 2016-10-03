@@ -13,9 +13,8 @@ myApp.controller('homeController', ['$scope', '$http', function ($scope, $http) 
       }).then(function(results){
         console.log('made it to then');
         console.log('results.success', results.data);
-
+        //array of alljobs from db
         $scope.alljobs = results.data;
-        console.log('alljobs', alljobs);
 
       });//end then
     };//end getAll function
