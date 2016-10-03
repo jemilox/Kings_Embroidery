@@ -3,7 +3,7 @@ myApp.constant('moment', moment);
 
 myApp.controller('addJobController', ['$scope', '$http', 'moment', function ($scope, $http, moment) {
   console.log('in addJobController');
-
+  //clear scope.success for ng-show
   $scope.success = false;
 
   var m = moment();
@@ -17,7 +17,7 @@ myApp.controller('addJobController', ['$scope', '$http', 'moment', function ($sc
       company : $scope.company,
       duedate : $scope.duedate,
       pieces: $scope.pieces
-    };
+    };//end objectToSend
 
     console.log('objectToSend', objectToSend);
 
@@ -34,8 +34,8 @@ myApp.controller('addJobController', ['$scope', '$http', 'moment', function ($sc
         $scope.pieces = objectToSend.pieces;
         $scope.success = true;
 
-      }
-    });
-  };
+      }//end if
+    });//end then
+  };//end addjob function
 
-}]);
+}]);//end controller

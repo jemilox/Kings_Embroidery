@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded( {extended: true});
+var urlencodedParser = bodyParser.urlencoded( {extended: false});
 var portDecision = process.env.PORT || 3000;
 var pg = require('pg');
 var connectionString = 'postgress://localhost:5432/jobstwo';
@@ -18,9 +18,9 @@ app.get('/', urlencodedParser, function (req, res) {
   res.sendFile(path.resolve('public/index.html'));
 });
 
-app.use(express.static('public'));
 
-app.get('/all', urlencodedParser, function (req, res) {
+
+app.get('/all', function (req, res) {
   console.log('in get /all');
   pg.connect(connectionString, function (err, client, done) {
       if (err){
@@ -32,10 +32,11 @@ app.get('/all', urlencodedParser, function (req, res) {
         queryResults.on('row', function (row) {
           alljobs.push(row);
           console.log('alljobs', alljobs[0]);
-          queryResults.on('end', function () {
-            done();
-             return res.json(alljobs);
-          });//end queryResults function
+        });
+        queryResults.on('end', function () {
+          done();
+          return res.json(alljobs);
+          //end queryResults function
         });//end queryResults on function
       }//end else
   });//end pg connect
@@ -63,3 +64,5 @@ app.post('/newjob', urlencodedParser, function (req, res) {
 
   //create variables from req
 });
+
+app.use(express.static('public'));
