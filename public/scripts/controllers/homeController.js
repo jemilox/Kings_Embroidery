@@ -24,7 +24,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', function ($scop
         //array of alljobs from db
         $scope.alljobs = results.data;
         $scope.alljobs = $scope.alljobs.map(function (index) {
-          var m = moment(index.duedate).format('MM DD YYYY');
+          var m = moment(index.duedate).format('M/D/YYYY');
           return {company: index.company, duedate: m, pieces: index.pieces}
         });//end map function
         console.log($scope.alljobs);
