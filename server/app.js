@@ -2,11 +2,12 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded( {extended: false});
+var urlencodedParser = bodyParser.urlencoded( {extended: true});
 var portDecision = process.env.PORT || 3000;
 var pg = require('pg');
 var connectionString = 'postgress://localhost:5432/jobstwo';
 
+app.use(bodyParser.json());
 
 app.listen( portDecision, function () {
   console.log("3000 is up!");
@@ -42,7 +43,7 @@ app.get('/all', urlencodedParser, function (req, res) {
 
 app.post('/newjob', urlencodedParser, function (req, res) {
   console.log('in .post newjob');
-  console.log('req.body', req.body);
+  console.log('req.body', req.body.company);
   var company = "ebay";
   var duedate = "10-2-16";
   var pieces = 10;
