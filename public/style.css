@@ -54,9 +54,12 @@ footer {
 
 }
 .job {
-  flex-grow: 1;
   background-color: beige;
   margin: 5px;
+  height: 4vh;
+  display: flex;
+  align-items: center;
+
 }
 .row {
   margin: 0;
@@ -79,4 +82,9 @@ h1 {
   width: 40vw;
   font-size: 3em;
   text-align: right;
+}
+
+.deleteedit {
+  float: right;
+  margin-left: auto;
 }
