@@ -44,9 +44,9 @@ app.get('/all', urlencodedParser, function (req, res) {
 app.post('/newjob', urlencodedParser, function (req, res) {
   console.log('in .post newjob');
   console.log('req.body', req.body.company);
-  var company = "ebay";
-  var duedate = "10-2-16";
-  var pieces = 10;
+  var company = req.body.company;
+  var duedate = req.body.duedate;
+  var pieces = req.body.pieces;
   console.log(company, duedate, pieces);
   pg.connect(connectionString, function (err, client, done) {
       if (err){
