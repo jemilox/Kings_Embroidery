@@ -5,6 +5,11 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', function ($scop
   console.log('in homeController');
 
 
+    $scope.dateMonOne = moment().day(1).format('DD/MM')
+
+
+
+
     $scope.getAll = function () {
       console.log('in getall');
       //clear data

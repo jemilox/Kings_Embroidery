@@ -9,7 +9,7 @@ myApp.controller('addJobController', ['$scope', '$http', 'moment', function ($sc
   var m = moment();
   console.log(m);
 
-  var c =moment('2016-10-02T05:00:00.000Z').format('dddd');
+  var c =moment().day(5).format('DD MM');
   console.log(c);
 
 

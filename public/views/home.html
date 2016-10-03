@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Home</title>
-    <link rel="stylesheet" href="../style.css">
-  </head>
-  <body>
+
     <div class="container">
       <div class="row main mainOne">
         <div class='row week firstWeek'>
           <div class="day Monday">
-            <div class="job firstjob"></div>
+            <div class="job firstjob">{{dateMonOne}}</div>
             <div class="job" ng-repeat="job in alljobs">
               Company:{{job.company}} Pieces:{{job.pieces}} Due Date: {{job.duedate}}
             </div>
@@ -21,7 +14,7 @@
             <div class="job"></div> -->
           </div>
           <div class="day Tuesday">
-            <div class="job firstjob"></div>
+            <div class="job firstjob" ng-model="dateTues1"></div>
             <div class="job"></div>
             <div class="job"></div>
             <div class="job"></div>
@@ -30,7 +23,7 @@
             <div class="job"></div>
           </div>
           <div class="day Wednesday">
-            <div class="job firstjob"></div>
+            <div class="job firstjob" ng-model="dateWed1"></div>
             <div class="job"></div>
             <div class="job"></div>
             <div class="job"></div>
@@ -39,7 +32,7 @@
             <div class="job"></div>
           </div>
           <div class="day Thursday">
-            <div class="job firstjob"></div>
+            <div class="job firstjob" ng-model="dateThurs1"></div>
             <div class="job"></div>
             <div class="job"></div>
             <div class="job"></div>
@@ -48,7 +41,7 @@
             <div class="job"></div>
           </div>
           <div class="day Friday">
-            <div class="job firstjob"></div>
+            <div class="job firstjob" ng-model="dateFri1"></div>
             <div class="job"></div>
             <div class="job"></div>
             <div class="job"></div>
@@ -61,7 +54,7 @@
       <div class="row main mainTwo">
         <div class='week firstWeek'>
           <div class="day Monday">
-            <div class="job firstjob"></div>
+            <div class="job firstjob" ng-model="dateMon2"></div>
             <div class="job"></div>
             <div class="job"></div>
             <div class="job"></div>
@@ -70,7 +63,7 @@
             <div class="job"></div>
           </div>
           <div class="day Tuesday">
-            <div class="job firstjob"></div>
+            <div class="job firstjob" ng-model="dateTues2"></div>
             <div class="job"></div>
             <div class="job"></div>
             <div class="job"></div>
@@ -79,7 +72,7 @@
             <div class="job"></div>
           </div>
           <div class="day Wednesday">
-            <div class="job firstjob"></div>
+            <div class="job firstjob" ng-model="dateWed2"></div>
             <div class="job"></div>
             <div class="job"></div>
             <div class="job"></div>
@@ -88,7 +81,7 @@
             <div class="job"></div>
           </div>
           <div class="day Thursday">
-            <div class="job firstjob"></div>
+            <div class="job firstjob" ng-model="dateThurs2"></div>
             <div class="job"></div>
             <div class="job"></div>
             <div class="job"></div>
@@ -97,7 +90,7 @@
             <div class="job"></div>
           </div>
           <div class="day Friday">
-            <div class="job firstjob"></div>
+            <div class="job firstjob" ng-model="dateFri2"></div>
             <div class="job"></div>
             <div class="job"></div>
             <div class="job"></div>
@@ -108,5 +101,3 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
