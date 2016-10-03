@@ -22,6 +22,10 @@ myApp.controller('addJobController', ['$scope', '$http', 'moment', function ($sc
       pieces: $scope.pieces
     };//end objectToSend
 
+    $scope.company = "";
+    $scope.pieces = "";
+    $scope.duedate = "";
+
     console.log('objectToSend', objectToSend);
 
     $http({
@@ -33,8 +37,8 @@ myApp.controller('addJobController', ['$scope', '$http', 'moment', function ($sc
       console.log('results.success', results.data.success);
       if (results.data.success){
         $scope.job = objectToSend.company;
-        $scope.duedate = moment(objectToSend.duedate).format('MM/DD/YY');
-        $scope.pieces = objectToSend.pieces;
+        $scope.date = moment(objectToSend.duedate).format('MM/DD/YY');
+        $scope.number = objectToSend.pieces;
         $scope.success = true;
 
       }//end if
