@@ -16,16 +16,6 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', function ($scop
     $scope.dateThursTwo = moment().day(11).format('M/D/YY');
     $scope.dateFriTwo = moment().day(12).format('M/D/YY');
 
-    $scope.monOneJobs = [];
-    $scope.tuesOneJobs = [];
-    $scope.wedOneJobs = [];
-    $scope.thursOneJobs = [];
-    $scope.friOneJobs = [];
-    $scope.monTwoJobs = [];
-    $scope.tuesTwoJobs = [];
-    $scope.wedTwoJobs = [];
-    $scope.thursTwoJobs = [];
-    $scope.friTwoJobs = [];
 
 
 
@@ -44,9 +34,20 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', function ($scop
         $scope.alljobs = results.data;
         $scope.alljobs = $scope.alljobs.map(function (index) {
           var m = moment(index.duedate).format('M/D/YY');
-          return {company: index.company, duedate: m, pieces: index.pieces};
+          return {id: index.id, company: index.company, duedate: m, pieces: index.pieces};
         });//end map function
         //console.log($scope.alljobs);
+
+            $scope.monOneJobs = [];
+            $scope.tuesOneJobs = [];
+            $scope.wedOneJobs = [];
+            $scope.thursOneJobs = [];
+            $scope.friOneJobs = [];
+            $scope.monTwoJobs = [];
+            $scope.tuesTwoJobs = [];
+            $scope.wedTwoJobs = [];
+            $scope.thursTwoJobs = [];
+            $scope.friTwoJobs = [];
         //separate jobs by date
         for (var i = 0; i < $scope.alljobs.length; i++) {
           switch($scope.alljobs[i].duedate){
@@ -87,6 +88,24 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', function ($scop
 
       });//end then
     };//end getAll function
+
+    $scope.delete = function (id) {
+      console.log('in delete', id);
+
+      var objectToSend = {
+        id: id
+      };
+      $http({
+        method: 'DELETE',
+        url: '/delete',
+        data: objectToSend,
+        headers: {"Content-Type": "application/json;charset=utf-8"}
+      }).then(function (results) {
+        console.log('made it to results!');
+        $scope.getAll();
+      });
+    };
+
 
     $scope.getAll();
 

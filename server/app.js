@@ -28,10 +28,10 @@ app.get('/all', function (req, res) {
       }else{
         var alljobs = [];
         var queryResults = client.query('SELECT * FROM jobs');
-        console.log(queryResults);
+        //console.log(queryResults);
         queryResults.on('row', function (row) {
           alljobs.push(row);
-          console.log('alljobs', alljobs[0]);
+          //console.log('alljobs', alljobs[0]);
         });
         queryResults.on('end', function () {
           done();
@@ -63,6 +63,22 @@ app.post('/newjob', urlencodedParser, function (req, res) {
     });//end pg conect
 
   //create variables from req
+});
+
+app.delete('/delete', urlencodedParser, function (req, res) {
+  console.log('in delete');
+  console.log(req.body.id);
+  var id = req.body.id;
+  pg.connect(connectionString, function (err, client, done) {
+    if (err){
+      console.log(err);
+    }else{
+      console.log('connected to database in delete');
+      client.query('DELETE from jobs WHERE id = $1', [id]);
+      done();
+      res.send({success: true});
+    }
+  });
 });
 
 app.use(express.static('public'));

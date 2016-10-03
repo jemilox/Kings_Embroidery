@@ -5,28 +5,32 @@
           <div class="day Monday">
             <div class="job firstjob">Monday, {{dateMonOne}}</div>
             <div class="job" ng-repeat="job in monOneJobs">
-              {{job.company}} Pieces:{{job.pieces}} Due: {{job.duedate}}<div class="deleteedit"><button>x</button><button>Edit</button></div>
+              {{job.company}} Pieces:{{job.pieces}} <div class="deleteedit"><button ng-click="delete(job.id)">x</button><button>Edit</button></div>
             </div>
           </div>
           <div class="day Tuesday">
             <div class="job firstjob">Tuesday, {{dateTuesOne}}</div>
             <div class="job" ng-repeat="job in tuesOneJobs">
-              {{job.company}} Pieces:{{job.pieces}} Due: {{job.duedate}}></div>
+              {{job.company}} Pieces:{{job.pieces}}<div class="deleteedit"><button ng-click="delete(job.id)">x</button><button>Edit</button></div>
+            </div>
           </div>
           <div class="day Wednesday">
             <div class="job firstjob">Wednesday, {{dateWedOne}}</div>
             <div class="job" ng-repeat="job in wedOneJobs">
-              {{job.company}} Pieces:{{job.pieces}} Due: {{job.duedate}}></div>
+              {{job.company}} Pieces:{{job.pieces}} <div class="deleteedit"><button ng-click="delete(job.id)">x</button><button>Edit</button></div>
+            </div>
           </div>
           <div class="day Thursday">
             <div class="job firstjob">Thursday, {{dateThursOne}}</div>
             <div class="job" ng-repeat="job in thursOneJobs">
-              {{job.company}} Pieces:{{job.pieces}} Due: {{job.duedate}}></div>
+              {{job.company}} Pieces:{{job.pieces}}<div class="deleteedit"><button ng-click="delete(job.id)">x</button><button>Edit</button></div>
+            </div>
           </div>
           <div class="day Friday">
             <div class="job firstjob">Friday, {{dateFriOne}}</div>
             <div class="job" ng-repeat="job in friOneJobs">
-              {{job.company}} Pieces:{{job.pieces}} Due: {{job.duedate}}></div>
+              {{job.company}} Pieces:{{job.pieces}} <div class="deleteedit"><button ng-click="delete(job.id)">x</button><button>Edit</button></div>
+            </div>
           </div>
         </div>
       </div>
@@ -35,27 +39,32 @@
           <div class="day Monday">
             <div class="job firstjob">Monday, {{dateMonTwo}}</div>
             <div class="job" ng-repeat="job in monTwoJobs">
-              {{job.company}} Pieces:{{job.pieces}} Due: {{job.duedate}}></div>
+              {{job.company}} Pieces:{{job.pieces}} <div class="deleteedit"><button ng-click="delete(job.id)">x</button><button>Edit</button></div>
+            </div>
           </div>
           <div class="day Tuesday">
             <div class="job firstjob">Tuesday, {{dateTuesTwo}}</div>
             <div class="job" ng-repeat="job in tuesTwoJobs">
-              {{job.company}} Pieces:{{job.pieces}} Due: {{job.duedate}}></div>
+              {{job.company}} Pieces:{{job.pieces}} <div class="deleteedit"><button ng-click="delete(job.id)">x</button><button>Edit</button></div>
+            </div>
           </div>
           <div class="day Wednesday">
             <div class="job firstjob">Wednesday, {{dateWedTwo}}</div>
             <div class="job" ng-repeat="job in wedTwoJobs">
-              {{job.company}} Pieces:{{job.pieces}} Due: {{job.duedate}}></div>
+              {{job.company}} Pieces:{{job.pieces}} <div class="deleteedit"><button ng-click="delete(job.id)">x</button><button>Edit</button></div>
+            </div>
           </div>
           <div class="day Thursday">
             <div class="job firstjob">Thursday, {{dateThursTwo}}</div>
             <div class="job" ng-repeat="job in thursTwoJobs">
-              {{job.company}} Pieces:{{job.pieces}} Due: {{job.duedate}}></div>
+              {{job.company}} Pieces:{{job.pieces}} <div class="deleteedit"><button ng-click="delete(job.id)">x</button><button>Edit</button></div>
+            </div>
           </div>
           <div class="day Friday">
             <div class="job firstjob">Friday, {{dateFriTwo}}</div>
             <div class="job" ng-repeat="job in friTwoJobs">
-              {{job.company}} Pieces:{{job.pieces}} Due: {{job.duedate}}></div>
+              {{job.company}} Pieces:{{job.pieces}}<div class="deleteedit"><button ng-click="delete(job.id)">x</button><button>Edit</button></div>
+            </div>
           </div>
         </div>
       </div>

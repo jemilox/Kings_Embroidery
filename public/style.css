@@ -59,6 +59,7 @@ footer {
   height: 4vh;
   display: flex;
   align-items: center;
+  padding: 10px;
 
 }
 .row {
@@ -67,6 +68,7 @@ footer {
 .firstjob {
   background-color: white;
   text-align: center;
+  justify-content: center;
 }
 .kingsTitle {
   padding: 0;
@@ -87,4 +89,8 @@ h1 {
 .deleteedit {
   float: right;
   margin-left: auto;
+}
+
+button {
+  margin: 2px;
 }
