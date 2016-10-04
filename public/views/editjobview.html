@@ -1,3 +1,19 @@
-<button>Edit</button>
+<div>
+  <span ng-click="editButtonsCo()">Company: {{company}}<span><br>
+  <div ng-show="editCo">
+    <input type="text" ng-model="editCompany" placeholder="New Company Name">
+    <button ng-click="edit()">Edit</button>
+  </div>
 
-{{jobId}}
+  <span ng-click="editButtonsPi()">Pieces: {{pieces}}<span><br>
+  <div ng-show="editPi">
+    <input type="text" ng-model="editPieces" placeholder="New Pieces Count">
+    <button ng-click="edit()">Edit</button>
+  </div>
+
+  <span ng-click="editButtonsDate()">Due Date: {{duedate}}<span><br>
+  <div ng-show="editDate">
+    <input type="date" ng-model="editDueDate">
+    <button ng-click="edit()">Edit</button>
+  </div>
+</div>
