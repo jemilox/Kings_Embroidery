@@ -81,4 +81,9 @@ app.delete('/delete', urlencodedParser, function (req, res) {
   });
 });
 
+app.post('/edit', urlencodedParser, function (req, res) {
+  console.log('in edit post');
+  
+});
+
 app.use(express.static('public'));

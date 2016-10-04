@@ -29,7 +29,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
       }
     }
   });
-
+  //show edit fields if clicked
   $scope.editButtonsCo = function () {
     console.log('in editButtonsCo');
     $scope.editCo = true;
@@ -41,6 +41,15 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
   $scope.editButtonsDate = function () {
     console.log('in editButtonsDate');
     $scope.editDate = true;
+  };
+
+  $scope.editPieces = function () {
+    console.log('edit this', $scope.editPiecesmodel);
+
+    factory.editPieces($scope.editPiecesmodel).then(function (results) {
+      console.log('made it back from edit');
+    });
+
   };
 
 }]);//end controller

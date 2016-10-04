@@ -31,6 +31,19 @@ myApp.factory('factory', ['$http', function($http){
     console.log('this id is', id);
   };
 
+  var editPieces = function (number) {
+
+    var objectToSend = {
+      pieces: number
+    };
+
+    return $http({
+      method: 'POST',
+      url: '/edit',
+      data: objectToSend
+    });
+  };
+
 
   return {
     hereIam: hereIam,
@@ -39,7 +52,8 @@ myApp.factory('factory', ['$http', function($http){
     changeCurrentJobId: changeCurrentJobId,
     currentJobId: function () {
       return currentJobId;
-    }
+    },
+    editPieces: editPieces
   };
 
 }]);
