@@ -34,6 +34,7 @@ myApp.factory('factory', ['$http', function($http){
   var editPieces = function (number) {
 
     var objectToSend = {
+      id: currentJobId,
       pieces: number
     };
 

@@ -83,7 +83,19 @@ app.delete('/delete', urlencodedParser, function (req, res) {
 
 app.post('/edit', urlencodedParser, function (req, res) {
   console.log('in edit post');
-  
+  console.log(req.body);
+  var id = req.body.id;
+  var pieces = req.body.pieces;
+  pg.connect(connectionString, function (err, client, done) {
+    if (err){
+      console.log(err);
+    }else{
+      console.log('connected to db in edit');
+      client.query('UPDATE jobs SET pieces = $1 WHERE id = $2', [pieces, id]);
+      done();
+      res.send({success: true});
+    }
+  });
 });
 
 app.use(express.static('public'));
