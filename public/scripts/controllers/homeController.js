@@ -22,12 +22,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', func
   $scope.getAll = function () {
     console.log('in getall');
     //clear data
-
-
-    $http({
-      method: 'GET',
-      url: '/all',
-    }).then(function(results){
+    factory.getAll().then(function(results){
       console.log('made it to then');
       console.log('results.success', results.data);
       //array of alljobs from db

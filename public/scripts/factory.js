@@ -5,8 +5,21 @@ myApp.factory('factory', ['$http', function($http){
     console.log('made it here to factory');
   };
 
+  var getAll = function () {
+
+    return $http({
+      method: 'GET',
+      url: '/all',
+    });
+  };
+
+
+
+
+
   return {
-    hereIam: hereIam
+    hereIam: hereIam,
+    getAll: getAll
   };
 
 }]);
