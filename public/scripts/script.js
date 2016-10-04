@@ -9,6 +9,10 @@ myApp.controller('home', ['$scope', '$http', function ($scope, $http) {
 
 myApp.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.
+  when ('/edit', {
+    templateUrl: "views/editjobview.html",
+    controller: "editJobController"
+  }).
   when ('/addjob', {
     templateUrl: "views/addjobview.html",
     controller: "addJobController"

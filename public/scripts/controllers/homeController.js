@@ -90,20 +90,16 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', func
     var objectToSend = {
       id: id
     };
-    $http({
-      method: 'DELETE',
-      url: '/delete',
-      data: objectToSend,
-      headers: {"Content-Type": "application/json;charset=utf-8"}
-    }).then(function (results) {
+
+    factory.deletejob(objectToSend).then(function (results) {
       console.log('made it to results!');
       $scope.getAll();
     });
   };
 
-  $scope.updateThis = function () {
+  $scope.updateThis = function (id) {
     console.log('ng click works');
-    factory.hereIam();
+    factory.changeCurrentJobId(id);
   };
 
 
