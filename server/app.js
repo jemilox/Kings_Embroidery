@@ -98,4 +98,37 @@ app.post('/edit', urlencodedParser, function (req, res) {
   });
 });
 
+app.post('/editcompany', urlencodedParser, function (req, res) {
+  console.log('in edit post');
+  console.log(req.body);
+  var id = req.body.id;
+  var company = req.body.company;
+  pg.connect(connectionString, function (err, client, done) {
+    if (err){
+      console.log(err);
+    }else{
+      console.log('connected to db in edit');
+      client.query('UPDATE jobs SET company = $1 WHERE id = $2', [company, id]);
+      done();
+      res.send({success: true});
+    }
+  });
+});
+
+app.post('/editdate', urlencodedParser, function (req, res) {
+  console.log('in edit post');
+  console.log(req.body);
+  var id = req.body.id;
+  var duedate = req.body.duedate;
+  pg.connect(connectionString, function (err, client, done) {
+    if (err){
+      console.log(err);
+    }else{
+      console.log('connected to db in edit');
+      client.query('UPDATE jobs SET duedate = $1 WHERE id = $2', [duedate, id]);
+      done();
+      res.send({success: true});
+    }
+  });
+});
 app.use(express.static('public'));

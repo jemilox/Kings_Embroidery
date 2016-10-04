@@ -45,6 +45,34 @@ myApp.factory('factory', ['$http', function($http){
     });
   };
 
+  var editCompany = function (number) {
+
+    var objectToSend = {
+      id: currentJobId,
+      company: number
+    };
+
+    return $http({
+      method: 'POST',
+      url: '/editcompany',
+      data: objectToSend
+    });
+  };
+
+  var editDate = function (number) {
+
+    var objectToSend = {
+      id: currentJobId,
+      duedate: number
+    };
+
+    return $http({
+      method: 'POST',
+      url: '/editdate',
+      data: objectToSend
+    });
+  };
+
 
   return {
     hereIam: hereIam,
@@ -54,7 +82,9 @@ myApp.factory('factory', ['$http', function($http){
     currentJobId: function () {
       return currentJobId;
     },
-    editPieces: editPieces
+    editPieces: editPieces,
+    editDate: editDate,
+    editCompany: editCompany
   };
 
 }]);

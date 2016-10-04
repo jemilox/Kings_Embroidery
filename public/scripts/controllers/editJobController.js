@@ -8,7 +8,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
 
   //set ng-show to false on each
   $scope.editCo = false;
-  $scope.editDate = false;
+  $scope.editD = false;
   $scope.editPi = false;
 
   $scope.company = '';
@@ -40,7 +40,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
   };
   $scope.editButtonsDate = function () {
     console.log('in editButtonsDate');
-    $scope.editDate = true;
+    $scope.editD = true;
   };
 
   $scope.editPieces = function () {
@@ -51,5 +51,23 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     });
 
   };
+
+  $scope.editCompany = function () {
+    console.log('edit this', $scope.editCompanymodel);
+
+    factory.editCompany($scope.editCompanymodel).then(function (results) {
+      console.log('made it back from edit');
+    });
+
+  };
+
+  $scope.editDate = function () {
+    console.log('edit this', $scope.editDueDatemodel);
+
+    factory.editDate($scope.editDueDatemodel).then(function (results) {
+      console.log('made it back from edit');
+    });
+
+  };//end editDate
 
 }]);//end controller
