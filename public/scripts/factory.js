@@ -3,10 +3,6 @@ myApp.factory('factory', ['$http', function($http){
 
   var currentJobId = "";
 
-  var hereIam = function () {
-    console.log('made it here to factory');
-  };
-
   var getAll = function () {
 
     return $http({
@@ -75,7 +71,6 @@ myApp.factory('factory', ['$http', function($http){
 
 
   return {
-    hereIam: hereIam,
     getAll: getAll,
     deletejob: deletejob,
     changeCurrentJobId: changeCurrentJobId,

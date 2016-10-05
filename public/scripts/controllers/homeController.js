@@ -84,6 +84,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', func
     });//end then
   };//end getAll function
 
+  //delete job
   $scope.delete = function (id) {
     console.log('in delete', id);
 
@@ -95,14 +96,15 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', func
       console.log('made it to results!');
       $scope.getAll();
     });
-  };
+  };//end delete
 
+  //go to edit, tell which job to edit
   $scope.updateThis = function (id) {
     console.log('ng click works');
     factory.changeCurrentJobId(id);
   };
 
-
+  //run get all at page load
   $scope.getAll();
 
 }]);//end controller

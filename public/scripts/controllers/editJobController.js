@@ -49,7 +49,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     console.log('in editButtonsDate');
     $scope.editD = true;
   };
-
+  //edit pieces text
   $scope.editPieces = function () {
     console.log('edit this', $scope.editPiecesmodel);
 
@@ -57,31 +57,30 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
       console.log('made it back from edit');
       $scope.editPi = false;
     });
-
   };
 
+  //edit company text
   $scope.editCompany = function () {
     console.log('edit this', $scope.editCompanymodel);
 
     factory.editCompany($scope.editCompanymodel).then(function (results) {
       console.log('made it back from edit');
       $scope.editCo = false;
-      $scope.$apply();
-    });
+    });//end factory call
+  };//end edit company
 
-  };
-
+  //edit date text
   $scope.editDate = function () {
     console.log('edit this', $scope.editDueDatemodel);
 
     factory.editDate($scope.editDueDatemodel).then(function (results) {
       console.log('made it back from edit');
       $scope.editD = false;
-    
-    });
-
+    });//end factory call
   };//end editDate
 
+
+  //delete job
   $scope.deleteJob = function () {
     console.log('in delete', $scope.id);
     var objectToSend = {
@@ -90,6 +89,6 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     factory.deletejob(objectToSend).then(function (response) {
       console.log('made it to then');
     });
-  };
+  };//end delete job
 
 }]);//end controller

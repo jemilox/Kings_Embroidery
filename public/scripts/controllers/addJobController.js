@@ -6,11 +6,11 @@ myApp.controller('addJobController', ['$scope', '$http', 'moment', function ($sc
   //clear scope.success for ng-show
   $scope.success = false;
 
-  var m = moment();
-  console.log(m);
-
-  var c =moment().day(5).format('DD MM');
-  console.log(c);
+  // var m = moment();
+  // console.log(m);
+  //
+  // var c =moment().day(5).format('DD MM');
+  // console.log(c);
 
 
   $scope.addjob = function () {
@@ -19,12 +19,19 @@ myApp.controller('addJobController', ['$scope', '$http', 'moment', function ($sc
     var objectToSend = {
       company : $scope.company,
       duedate : $scope.duedate,
-      pieces: $scope.pieces
+      pieces: $scope.pieces,
+      complete: false,
+      harddate: $scope.harddate,
+      notes: $scope.notes
+
     };//end objectToSend
 
     $scope.company = "";
     $scope.pieces = "";
     $scope.duedate = "";
+    $scope.harddate = "";
+    $scope.notes = "";
+
 
     console.log('objectToSend', objectToSend);
 
@@ -39,6 +46,9 @@ myApp.controller('addJobController', ['$scope', '$http', 'moment', function ($sc
         $scope.job = objectToSend.company;
         $scope.date = moment(objectToSend.duedate).format('MM/DD/YY');
         $scope.number = objectToSend.pieces;
+        $scope.complete = false;
+        $scope.harddate = objectToSend.harddate;
+        $scope.notes = objectToSend.notes;
         $scope.success = true;
 
       }//end if

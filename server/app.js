@@ -48,13 +48,16 @@ app.post('/newjob', urlencodedParser, function (req, res) {
   var company = req.body.company;
   var duedate = req.body.duedate;
   var pieces = req.body.pieces;
+  var complete = req.body.complete;
+  var harddate = req.body.harddate;
+  var notes = req.body.notes;
   console.log(company, duedate, pieces);
   pg.connect(connectionString, function (err, client, done) {
       if (err){
         console.log(err);
       }else{
         console.log('connected to database');
-        var queryResults = client.query('INSERT INTO jobs (company, pieces, duedate) VALUES($1, $2, $3)', [company, pieces, duedate]);
+        var queryResults = client.query('INSERT INTO jobs (company, duedate, pieces, complete, harddate, notes) VALUES($1, $2, $3, $4, $5, $6)', [company, duedate, pieces, complete, harddate, notes]);
         queryResults.on('end', function () {
           done();
           res.send({success: true});
