@@ -94,18 +94,6 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', func
           }//end if
         }//first for loop
       }//second for loop
-      // $scope.monOneJobs = [];
-      // $scope.tuesOneJobs = [];
-      // $scope.wedOneJobs = [];
-      // $scope.thursOneJobs = [];
-      // $scope.friOneJobs = [];
-      // $scope.monTwoJobs = [];
-      // $scope.tuesTwoJobs = [];
-      // $scope.wedTwoJobs = [];
-      // $scope.thursTwoJobs = [];
-      // $scope.friTwoJobs = [];
-
-
     });//end then
   };//end getAll function
 
