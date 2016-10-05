@@ -41,6 +41,48 @@ myApp.factory('factory', ['$http', function($http){
     });
   };
 
+  var editHarddate = function (number) {
+    console.log(number);
+    var objectToSend = {
+      id: currentJobId,
+      harddate: number
+    };
+
+    return $http({
+      method: 'POST',
+      url: '/editharddate',
+      data: objectToSend
+    });
+  };
+
+  var editComplete = function (number) {
+
+    var objectToSend = {
+      id: currentJobId,
+      complete: number
+    };
+
+    return $http({
+      method: 'POST',
+      url: '/editcomplete',
+      data: objectToSend
+    });
+  };
+
+  var editNotes = function (number) {
+
+    var objectToSend = {
+      id: currentJobId,
+      notes: number
+    };
+
+    return $http({
+      method: 'POST',
+      url: '/editnotes',
+      data: objectToSend
+    });
+  };
+
   var editCompany = function (number) {
 
     var objectToSend = {
@@ -79,7 +121,10 @@ myApp.factory('factory', ['$http', function($http){
     },
     editPieces: editPieces,
     editDate: editDate,
-    editCompany: editCompany
+    editCompany: editCompany,
+    editNotes: editNotes,
+    editComplete: editComplete,
+    editHarddate: editHarddate
   };
 
 }]);

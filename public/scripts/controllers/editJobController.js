@@ -12,28 +12,54 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
   $scope.editCo = false;
   $scope.editD = false;
   $scope.editPi = false;
+  $scope.editC = false;
+  $scope.editH = false;
+  $scope.editN = false;
 
   $scope.company = '';
 
   //get all from factory find job from id that was clicked
-  factory.getAll().then(function (results) {
-    //save get from factory into allJobs
-    $scope.allJobs = results.data;
-    console.log('in edit getAll results', $scope.allJobs);
-    for (var i = 0; i < $scope.allJobs.length; i++) {
-      //console.log('in for loop');
-      //console.log($scope.allJobs[i].id);
-      //console.log(jobId);
-      if ($scope.allJobs[i].id === jobId){
-        //save parts of the job to display on dom
-        $scope.id = $scope.allJobs[i].id;
-        $scope.company = $scope.allJobs[i].company;
-        $scope.pieces = $scope.allJobs[i].pieces;
-        $scope.duedate = moment($scope.allJobs[i].duedate).format('M/D/YY');
-        console.log('meow', $scope.company);
+  var getAll = function () {
+
+    return factory.getAll().then(function (results) {
+      //save get from factory into allJobs
+      $scope.allJobs = results.data;
+      console.log('in edit getAll results', $scope.allJobs);
+      for (var i = 0; i < $scope.allJobs.length; i++) {
+        //console.log('in for loop');
+        //console.log($scope.allJobs[i].id);
+        //console.log(jobId);
+        if ($scope.allJobs[i].id === jobId){
+          //save parts of the job to display on dom
+          $scope.id = $scope.allJobs[i].id;
+          $scope.company = $scope.allJobs[i].company;
+          $scope.pieces = $scope.allJobs[i].pieces;
+          $scope.duedate = moment($scope.allJobs[i].duedate).format('M/D/YY');
+          $scope.complete = $scope.allJobs[i].complete;
+          $scope.harddate = $scope.allJobs[i].harddate;
+          $scope.notes = $scope.allJobs[i].notes;
+          console.log('meow', $scope.company);
+        }
       }
-    }
-  });
+    });
+  };
+
+  getAll();
+  //show edit fields if clicked
+  $scope.editButtonsC = function () {
+    console.log('in editButtonsC');
+    $scope.editC = true;
+  };
+  //show edit fields if clicked
+  $scope.editButtonsH = function () {
+    console.log('in editButtonsH');
+    $scope.editH = true;
+  };
+  //show edit fields if clicked
+  $scope.editButtonsN = function () {
+    console.log('in editButtonsN');
+    $scope.editN = true;
+  };
   //show edit fields if clicked
   $scope.editButtonsCo = function () {
     console.log('in editButtonsCo');
@@ -49,6 +75,37 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     console.log('in editButtonsDate');
     $scope.editD = true;
   };
+  //edit notes text
+  $scope.editNotes = function () {
+    console.log('edit this', $scope.editNotesmodel);
+
+    factory.editNotes($scope.editNotesmodel).then(function (results) {
+      console.log('made it back from edit');
+      $scope.editN = false;
+      getAll();
+    });
+  };
+
+  //edit harddate xt
+  $scope.editHarddate = function () {
+    console.log('edit this', $scope.editHarddatemodel);
+
+    factory.editHarddate($scope.editHarddatemodel).then(function (results) {
+      console.log('made it back from edit');
+      $scope.editH = false;
+      getAll();
+    });
+  };
+  //edit pieces complete
+  $scope.editComplete = function () {
+    console.log('edit this', $scope.editCompletemodel);
+
+    factory.editComplete($scope.editCompletemodel).then(function (results) {
+      console.log('made it back from edit');
+      $scope.editC = false;
+      getAll();
+    });
+  };
   //edit pieces text
   $scope.editPieces = function () {
     console.log('edit this', $scope.editPiecesmodel);
@@ -56,6 +113,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     factory.editPieces($scope.editPiecesmodel).then(function (results) {
       console.log('made it back from edit');
       $scope.editPi = false;
+      getAll();
     });
   };
 
@@ -66,6 +124,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     factory.editCompany($scope.editCompanymodel).then(function (results) {
       console.log('made it back from edit');
       $scope.editCo = false;
+      getAll();
     });//end factory call
   };//end edit company
 
@@ -76,6 +135,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     factory.editDate($scope.editDueDatemodel).then(function (results) {
       console.log('made it back from edit');
       $scope.editD = false;
+      getAll();
     });//end factory call
   };//end editDate
 

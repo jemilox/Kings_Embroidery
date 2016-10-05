@@ -83,7 +83,7 @@ app.delete('/delete', urlencodedParser, function (req, res) {
     }
   });
 });
-
+//edit pieces
 app.post('/edit', urlencodedParser, function (req, res) {
   console.log('in edit post');
   console.log(req.body);
@@ -99,7 +99,59 @@ app.post('/edit', urlencodedParser, function (req, res) {
       res.send({success: true});
     }
   });
-});
+});//end edit pieces
+
+//edit notes
+app.post('/editnotes', urlencodedParser, function (req, res) {
+  console.log('in edit notes post');
+  console.log(req.body);
+  var id = req.body.id;
+  var notes = req.body.notes;
+  pg.connect(connectionString, function (err, client, done) {
+    if (err){
+      console.log(err);
+    }else{
+      console.log('connected to db in edit');
+      client.query('UPDATE jobs SET notes = $1 WHERE id = $2', [notes, id]);
+      done();
+      res.send({success: true});
+    }
+  });
+});//end edit notes
+//edit complete
+app.post('/editcomplete', urlencodedParser, function (req, res) {
+  console.log('in edit post complete');
+  console.log(req.body);
+  var id = req.body.id;
+  var complete = req.body.complete;
+  pg.connect(connectionString, function (err, client, done) {
+    if (err){
+      console.log(err);
+    }else{
+      console.log('connected to db in edit');
+      client.query('UPDATE jobs SET complete = $1 WHERE id = $2', [complete, id]);
+      done();
+      res.send({success: true});
+    }
+  });
+});//end edit complete
+//edit harddate
+app.post('/editharddate', urlencodedParser, function (req, res) {
+  console.log('in edit post harddate');
+  console.log(req.body);
+  var id = req.body.id;
+  var harddate = req.body.harddate;
+  pg.connect(connectionString, function (err, client, done) {
+    if (err){
+      console.log(err);
+    }else{
+      console.log('connected to db in edit');
+      client.query('UPDATE jobs SET harddate = $1 WHERE id = $2', [harddate, id]);
+      done();
+      res.send({success: true});
+    }
+  });
+});//end edit harddate
 
 app.post('/editcompany', urlencodedParser, function (req, res) {
   console.log('in edit post');

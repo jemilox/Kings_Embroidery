@@ -17,5 +17,23 @@
     <button ng-click="editDate()">Edit</button>
   </div>
 
+  <span ng-click="editButtonsC()">Complete: {{complete}}</span><br>
+  <div ng-show="editC">
+    <input type="checkbox" ng-model="editCompletemodel">
+    <button ng-click="editComplete()">Edit</button>
+  </div>
+
+  <span ng-click="editButtonsH()">Hard Date: {{harddate}}</span><br>
+  <div ng-show="editH">
+    <input type="checkbox" ng-model="editHarddatemodel">
+    <button ng-click="editHarddate()">Edit</button>
+  </div>
+
+  <span ng-click="editButtonsN()">Notes: {{notes}}</span><br>
+  <div ng-show="editN">
+    <input type="text" ng-model="editNotesmodel">
+    <button ng-click="editNotes()">Edit</button>
+  </div>
+
   <button ng-click="deleteJob()">Delete Job</button>
 </div>
