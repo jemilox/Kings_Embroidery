@@ -4,7 +4,7 @@
         <div class='row week firstWeek'>
           <div class="day Monday">
             <div class="job firstjob">Monday, {{dateMonOne}}</div>
-            <div class="job" ng-repeat="job in monOneJobs">
+            <div class="job" ng-repeat="job in monOneJobs" ng-class="{'harddate': job.harddate}">
               <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} Pieces:{{job.pieces}}</span></a> <div class="deleteedit"><button ng-click="delete(job.id)">x</button><button>Edit</button></div>
             </div>
           </div>

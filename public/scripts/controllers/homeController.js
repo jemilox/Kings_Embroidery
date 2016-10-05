@@ -29,7 +29,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', func
       $scope.alljobs = results.data;
       $scope.alljobs = $scope.alljobs.map(function (index) {
         var m = moment(index.duedate).format('M/D/YY');
-        return {id: index.id, company: index.company, duedate: m, pieces: index.pieces};
+        return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate};
       });//end map function
       //console.log($scope.alljobs);
 
@@ -43,6 +43,10 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', func
           $scope.wedTwoJobs = [];
           $scope.thursTwoJobs = [];
           $scope.friTwoJobs = [];
+
+          $scope.allJobArrays = [$scope.monOneJobs, $scope.tuesOneJobs, $scope.wedOneJobs, $scope.thursOneJobs,
+            $scope.friOneJobs, $scope.monTwoJobs, $scope.tuesTwoJobs, $scope.wedTwoJobs, $scope.thursTwoJobs,
+            $scope.friTwoJobs];
       //separate jobs by date
       for (var i = 0; i < $scope.alljobs.length; i++) {
         switch($scope.alljobs[i].duedate){
@@ -76,9 +80,30 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', func
           case $scope.dateFriTwo:
             $scope.friTwoJobs.push($scope.alljobs[i]);
             break;
-        }
-      }
+        }//end switch
+      }//end for loop
 
+      for (var x = 0; x < $scope.allJobArrays.length; x++) {
+        for (var j = 0; j < $scope.allJobArrays[x].length; j++) {
+          //console.log($scope.monOneJobs[j]);
+          if($scope.allJobArrays[x][j].harddate){
+            var moveThis = $scope.allJobArrays[x].splice(j, 1);
+            //console.log('in for loop for monOneJobs', $scope.allJobArrays[x]);
+            $scope.allJobArrays[x].unshift(moveThis[0]);
+            //console.log('in for loop for monOneJobs', $scope.allJobArrays[x]);
+          }//end if
+        }//first for loop
+      }//second for loop
+      // $scope.monOneJobs = [];
+      // $scope.tuesOneJobs = [];
+      // $scope.wedOneJobs = [];
+      // $scope.thursOneJobs = [];
+      // $scope.friOneJobs = [];
+      // $scope.monTwoJobs = [];
+      // $scope.tuesTwoJobs = [];
+      // $scope.wedTwoJobs = [];
+      // $scope.thursTwoJobs = [];
+      // $scope.friTwoJobs = [];
 
 
     });//end then
