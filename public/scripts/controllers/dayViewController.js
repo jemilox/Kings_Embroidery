@@ -33,12 +33,7 @@ myApp.controller('dayViewController', ['$scope', '$http', 'moment', 'factory', f
         //console.log('first for loop', $scope.currentDayJobs);
       }//end for loop
       //console.log('in day view for loop', $scope.currentDayJobs);
-      for (var j = 0; j < $scope.currentDayJobs.length; j++) {
-        if($scope.currentDayJobs[j].harddate){
-          var moveThis = $scope.currentDayJobs.splice(j, 1);
-          $scope.currentDayJobs.unshift(moveThis[0]);
-        }
-      }
+
 
     });//end then
   };//end getAll function
@@ -78,6 +73,14 @@ myApp.controller('dayViewController', ['$scope', '$http', 'moment', 'factory', f
       }
     }
 
+  };
+
+  $scope.compareComplete = function (arg) {
+    return arg.complete === true;
+  };
+
+  $scope.compareHardDate = function (arg) {
+    return arg.harddate === false;
   };
 
   $scope.getAll();

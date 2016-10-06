@@ -102,3 +102,7 @@ button {
 .dayview {
   flex-grow: 1;
 }
+
+.complete {
+  background-color: grey;
+}

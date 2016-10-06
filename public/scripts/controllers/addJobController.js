@@ -21,7 +21,7 @@ myApp.controller('addJobController', ['$scope', '$http', 'moment', function ($sc
       duedate : $scope.duedate,
       pieces: $scope.pieces,
       complete: false,
-      harddate: $scope.harddate,
+      harddate: $scope.harddate || false,
       notes: $scope.notes
 
     };//end objectToSend

@@ -83,17 +83,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', func
         }//end switch
       }//end for loop
 
-      for (var x = 0; x < $scope.allJobArrays.length; x++) {
-        for (var j = 0; j < $scope.allJobArrays[x].length; j++) {
-          //console.log($scope.monOneJobs[j]);
-          if($scope.allJobArrays[x][j].harddate){
-            var moveThis = $scope.allJobArrays[x].splice(j, 1);
-            //console.log('in for loop for monOneJobs', $scope.allJobArrays[x]);
-            $scope.allJobArrays[x].unshift(moveThis[0]);
-            //console.log('in for loop for monOneJobs', $scope.allJobArrays[x]);
-          }//end if
-        }//first for loop
-      }//second for loop
+      console.log($scope.monOneJobs);
     });//end then
   };//end getAll function
 
@@ -123,6 +113,13 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', func
     factory.changeCurrentDay(id);
   };
 
+  $scope.compareComplete = function (arg) {
+    return arg.complete === true;
+  };
+
+  $scope.compareHardDate = function (arg) {
+    return arg.harddate === false;
+  };
 
   //run get all at page load
   $scope.getAll();
