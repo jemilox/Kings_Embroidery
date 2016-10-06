@@ -2,6 +2,7 @@ myApp.factory('factory', ['$http', function($http){
   console.log('in factory');
 
   var currentJobId = "";
+  var currentDay = "";
 
   var getAll = function () {
 
@@ -26,6 +27,11 @@ myApp.factory('factory', ['$http', function($http){
     currentJobId = id;
     console.log('this id is', id);
   };
+
+  var changeCurrentDay = function (id) {
+    currentDay = id;
+    console.log('the current day is', currentDay);
+  }
 
   var editPieces = function (number) {
 
@@ -124,7 +130,11 @@ myApp.factory('factory', ['$http', function($http){
     editCompany: editCompany,
     editNotes: editNotes,
     editComplete: editComplete,
-    editHarddate: editHarddate
+    editHarddate: editHarddate,
+    currentDay: function () {
+      return currentDay;
+    },
+    changeCurrentDay: changeCurrentDay
   };
 
 }]);

@@ -21,6 +21,10 @@ myApp.config(['$routeProvider', function ($routeProvider) {
     templateUrl: "views/home.html",
     controller: "homeController"
   }).
+  when ('/day', {
+    templateUrl: "views/dayview.html",
+    controller: "dayViewController"
+  }).
   otherwise({
     redirectTo: "/home"
   });

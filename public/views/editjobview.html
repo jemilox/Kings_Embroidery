@@ -19,13 +19,13 @@
 
   <span ng-click="editButtonsC()">Complete: {{complete}}</span><br>
   <div ng-show="editC">
-    <input type="checkbox" ng-model="editCompletemodel">
+    <input type="checkbox" ng-checked="complete" ng-model="editCompletemodel">
     <button ng-click="editComplete()">Edit</button>
   </div>
 
   <span ng-click="editButtonsH()">Hard Date: {{harddate}}</span><br>
   <div ng-show="editH">
-    <input type="checkbox" ng-model="editHarddatemodel">
+    <input type="checkbox" ng-checked="harddate" ng-model="editHarddatemodel">
     <button ng-click="editHarddate()">Edit</button>
   </div>
 

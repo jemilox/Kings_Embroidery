@@ -83,6 +83,8 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
       console.log('made it back from edit');
       $scope.editN = false;
       getAll();
+    }).then( function(){
+      getAll();
     });
   };
 
@@ -93,6 +95,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     factory.editHarddate($scope.editHarddatemodel).then(function (results) {
       console.log('made it back from edit');
       $scope.editH = false;
+    }).then( function(){
       getAll();
     });
   };
@@ -103,6 +106,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     factory.editComplete($scope.editCompletemodel).then(function (results) {
       console.log('made it back from edit');
       $scope.editC = false;
+    }).then( function(){
       getAll();
     });
   };
@@ -113,6 +117,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     factory.editPieces($scope.editPiecesmodel).then(function (results) {
       console.log('made it back from edit');
       $scope.editPi = false;
+    }).then( function(){
       getAll();
     });
   };
@@ -124,6 +129,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     factory.editCompany($scope.editCompanymodel).then(function (results) {
       console.log('made it back from edit');
       $scope.editCo = false;
+    }).then( function(){
       getAll();
     });//end factory call
   };//end edit company
@@ -135,6 +141,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     factory.editDate($scope.editDueDatemodel).then(function (results) {
       console.log('made it back from edit');
       $scope.editD = false;
+    }).then( function(){
       getAll();
     });//end factory call
   };//end editDate

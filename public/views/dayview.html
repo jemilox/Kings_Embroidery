@@ -1,0 +1,6 @@
+<div class="day">
+  <div class="job firstjob"><a href="#day">Monday, {{currentDay}}</a></div>
+  <div class="job" ng-repeat="job in monOneJobs" ng-class="{'harddate': job.harddate}">
+    <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} Pieces:{{job.pieces}}</span></a> <div class="deleteedit"><button ng-click="delete(job.id)">x</button></div>
+  </div>
+</div>

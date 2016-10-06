@@ -117,6 +117,13 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', func
     factory.changeCurrentJobId(id);
   };
 
+  //got to factory, tell which is currentDay
+  $scope.updateDay = function (id) {
+    console.log('updateDay click works');
+    factory.changeCurrentDay(id);
+  };
+
+
   //run get all at page load
   $scope.getAll();
 
