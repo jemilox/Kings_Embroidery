@@ -155,6 +155,13 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     };
     factory.deletejob(objectToSend).then(function (response) {
       console.log('made it to then');
+      //clear fields when deleted
+      $scope.company = "";
+      $scope.pieces = "";
+      $scope.duedate = "";
+      $scope.complete = "";
+      $scope.harddate = "";
+      $scope.notes = "";
     });
   };//end delete job
 

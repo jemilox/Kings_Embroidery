@@ -9,25 +9,25 @@
             </div>
           </div>
           <div class="day Tuesday">
-            <div class="job firstjob">Tuesday, {{dateTuesOne}}</div>
+            <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateTuesOne)">Tuesday, {{dateTuesOne}}<span></a></div>
             <div class="job" ng-repeat="job in tuesOneJobs" ng-class="{'harddate': job.harddate}">
               <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} Pieces:{{job.pieces}}</span></a> <div class="deleteedit"><button ng-click="delete(job.id)">x</button></div>
             </div>
           </div>
           <div class="day Wednesday">
-            <div class="job firstjob">Wednesday, {{dateWedOne}}</div>
+            <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateWedOne)">Wednesday, {{dateWedOne}}<span></a></div>
             <div class="job" ng-repeat="job in wedOneJobs" ng-class="{'harddate': job.harddate}">
               <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} Pieces:{{job.pieces}}</span></a> <div class="deleteedit"><button ng-click="delete(job.id)">x</button></div>
             </div>
           </div>
           <div class="day Thursday">
-            <div class="job firstjob">Thursday, {{dateThursOne}}</div>
+            <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateThursOne)">Thursday, {{dateThursOne}}<span></a></div>
             <div class="job" ng-repeat="job in thursOneJobs" ng-class="{'harddate': job.harddate}">
               <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} Pieces:{{job.pieces}}</span></a> <div class="deleteedit"><button ng-click="delete(job.id)">x</button></div>
             </div>
           </div>
           <div class="day Friday">
-            <div class="job firstjob">Friday, {{dateFriOne}}</div>
+            <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateFriOne)">Friday, {{dateFriOne}}<span></a></div>
             <div class="job" ng-repeat="job in friOneJobs" ng-class="{'harddate': job.harddate}">
               <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} Pieces:{{job.pieces}}</span></a> <div class="deleteedit"><button ng-click="delete(job.id)">x</button></div>
             </div>
@@ -37,31 +37,31 @@
       <div class="row main mainTwo">
         <div class='week firstWeek'>
           <div class="day Monday">
-            <div class="job firstjob">Monday, {{dateMonTwo}}</div>
+            <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateMonTwo)">Monday, {{dateMonTwo}}<span></a></div>
             <div class="job" ng-repeat="job in monTwoJobs" ng-class="{'harddate': job.harddate}">
               <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} Pieces:{{job.pieces}}</span></a> <div class="deleteedit"><button ng-click="delete(job.id)">x</button></div>
             </div>
           </div>
           <div class="day Tuesday">
-            <div class="job firstjob">Tuesday, {{dateTuesTwo}}</div>
+            <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateTuesTwo)">Tuesday, {{dateTuesTwo}}<span></a></div>
             <div class="job" ng-repeat="job in tuesTwoJobs" ng-class="{'harddate': job.harddate}">
               <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} Pieces:{{job.pieces}}</span></a> <div class="deleteedit"><button ng-click="delete(job.id)">x</button></div>
             </div>
           </div>
           <div class="day Wednesday">
-            <div class="job firstjob">Wednesday, {{dateWedTwo}}</div>
+            <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateWedTwo)">Wednesday, {{dateWedTwo}}<span></a></div>
             <div class="job" ng-repeat="job in wedTwoJobs" ng-class="{'harddate': job.harddate}">
               <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} Pieces:{{job.pieces}}</span></a> <div class="deleteedit"><button ng-click="delete(job.id)">x</button></div>
             </div>
           </div>
           <div class="day Thursday">
-            <div class="job firstjob">Thursday, {{dateThursTwo}}</div>
+            <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateThursTwo)">Thursday, {{dateThursTwo}}<span></a></div>
             <div class="job" ng-repeat="job in thursTwoJobs" ng-class="{'harddate': job.harddate}">
               <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} Pieces:{{job.pieces}}</span></a> <div class="deleteedit"><button ng-click="delete(job.id)">x</button></div>
             </div>
           </div>
           <div class="day Friday">
-            <div class="job firstjob">Friday, {{dateFriTwo}}</div>
+            <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateFriTwo)">Friday, {{dateFriTwo}}<span></a></div>
             <div class="job" ng-repeat="job in friTwoJobs" ng-class="{'harddate': job.harddate}">
               <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} Pieces:{{job.pieces}}</span></a> <div class="deleteedit"><button ng-click="delete(job.id)">x</button></div>
             </div>

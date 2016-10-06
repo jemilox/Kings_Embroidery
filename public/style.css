@@ -98,3 +98,7 @@ button {
 .harddate {
   background-color: lightblue;
 }
+
+.dayview {
+  flex-grow: 1;
+}

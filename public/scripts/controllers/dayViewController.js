@@ -13,13 +13,14 @@ myApp.controller('dayViewController', ['$scope', '$http', 'moment', 'factory', f
     console.log('in getall');
     //clear data
     factory.getAll().then(function(results){
+      $scope.currentDayJobs = [];
       console.log('made it to then');
       console.log('results.success in day view', results.data);
       //array of alljobs from db
       $scope.alljobs = results.data;
       $scope.alljobs = $scope.alljobs.map(function (index) {
         var m = moment(index.duedate).format('M/D/YY');
-        return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate};
+        return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate, notes: index.notes};
       });//end map function
       //console.log($scope.alljobs);
       console.log('after map function', $scope.alljobs);
@@ -41,6 +42,24 @@ myApp.controller('dayViewController', ['$scope', '$http', 'moment', 'factory', f
 
     });//end then
   };//end getAll function
+
+  $scope.updateThis = function (id) {
+    console.log('ng click works');
+    factory.changeCurrentJobId(id);
+  };
+
+  $scope.delete = function (id) {
+    console.log('in delete', id);
+
+    var objectToSend = {
+      id: id
+    };
+
+    factory.deletejob(objectToSend).then(function (results) {
+      console.log('made it to results!');
+      $scope.getAll();
+    });
+  };//end delete
 
   $scope.getAll();
 
