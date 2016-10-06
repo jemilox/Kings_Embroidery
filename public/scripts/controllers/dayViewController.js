@@ -26,13 +26,13 @@ myApp.controller('dayViewController', ['$scope', '$http', 'moment', 'factory', f
       console.log('after map function', $scope.alljobs);
       //separate jobs by date
       for (var i = 0; i < $scope.alljobs.length; i++) {
-        console.log('in if statement');
+        //console.log('in if statement');
         if ($scope.alljobs[i].duedate === $scope.currentDay){
           $scope.currentDayJobs.push($scope.alljobs[i]);
         }//end if
-        console.log('first for loop', $scope.currentDayJobs);
+        //console.log('first for loop', $scope.currentDayJobs);
       }//end for loop
-      console.log('in day view for loop', $scope.currentDayJobs);
+      //console.log('in day view for loop', $scope.currentDayJobs);
       for (var j = 0; j < $scope.currentDayJobs.length; j++) {
         if($scope.currentDayJobs[j].harddate){
           var moveThis = $scope.currentDayJobs.splice(j, 1);
@@ -60,6 +60,25 @@ myApp.controller('dayViewController', ['$scope', '$http', 'moment', 'factory', f
       $scope.getAll();
     });
   };//end delete
+
+  //get ng-model to tell if it is true or notes
+  // //complete function update complete status
+  $scope.jobComplete = function (id) {
+    console.log('in jobComplete click', id);
+    factory.changeCurrentJobId(id);
+    for (var k = 0; k < $scope.currentDayJobs.length; k++) {
+      if($scope.currentDayJobs[k].id == id){
+        console.log($scope.currentDayJobs[k]);
+        var sendtrue = $scope.currentDayJobs[k].complete;
+        factory.editComplete(sendtrue).then(function () {
+          console.log('made it to then');
+          $scope.getAll();
+
+        });
+      }
+    }
+
+  };
 
   $scope.getAll();
 

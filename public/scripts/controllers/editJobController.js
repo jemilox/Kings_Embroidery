@@ -35,10 +35,11 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
           $scope.company = $scope.allJobs[i].company;
           $scope.pieces = $scope.allJobs[i].pieces;
           $scope.duedate = moment($scope.allJobs[i].duedate).format('M/D/YY');
-          $scope.complete = $scope.allJobs[i].complete;
-          $scope.harddate = $scope.allJobs[i].harddate;
+          $scope.complete = !!$scope.allJobs[i].complete;
+          $scope.harddate = !!$scope.allJobs[i].harddate;
           $scope.notes = $scope.allJobs[i].notes;
           console.log('meow', $scope.company);
+          console.log($scope.allJobs[i]);
         }
       }
     });

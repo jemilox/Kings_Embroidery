@@ -31,7 +31,7 @@ myApp.factory('factory', ['$http', function($http){
   var changeCurrentDay = function (id) {
     currentDay = id;
     console.log('the current day is', currentDay);
-  }
+  };
 
   var editPieces = function (number) {
 
