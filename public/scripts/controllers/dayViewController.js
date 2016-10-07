@@ -4,8 +4,20 @@ myApp.controller('dayViewController', ['$scope', '$http', 'moment', 'factory', f
   console.log('in homeController');
   console.log('in dayViewController');
 
+
+
+  var m = moment().format('M/D/YY');
+  console.log(m);
+
   $scope.currentDay = factory.currentDay();
   console.log('in dayview on ', $scope.currentDay);
+
+  if (!$scope.currentDay){
+    console.log('if statement', $scope.currentDay, m);
+    $scope.currentDay = m;
+
+  }
+  console.log('$scope.currentDay', $scope.currentDay);
 
   $scope.currentDayJobs = [];
 

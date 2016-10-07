@@ -1,39 +1,45 @@
-<div>
-  <span ng-click="editButtonsCo()">Company: {{company}}</span><br>
-  <div ng-show="editCo">
-    <input type="text" ng-model="editCompanymodel" placeholder="New Company Name">
-    <button ng-click="editCompany()">Edit</button>
-  </div>
+<div class="container">
+  <div class="addjobbox">
+    <div class="addjob">
+      <div>
+        <span ng-click="editButtonsCo()">Company: {{company}}</span><br>
+        <div ng-show="editCo">
+          <input type="text" ng-model="editCompanymodel" placeholder="New Company Name">
+          <button ng-click="editCompany()">Edit</button>
+        </div>
 
-  <span ng-click="editButtonsPi()">Pieces: {{pieces}}</span><br>
-  <div ng-show="editPi">
-    <input type="text" ng-model="editPiecesmodel" placeholder="New Pieces Count">
-    <button ng-click="editPieces()">Edit</button>
-  </div>
+        <span ng-click="editButtonsPi()">Pieces: {{pieces}}</span><br>
+        <div ng-show="editPi">
+          <input type="text" ng-model="editPiecesmodel" placeholder="New Pieces Count">
+          <button ng-click="editPieces()">Edit</button>
+        </div>
 
-  <span ng-click="editButtonsDate()">Due Date: {{duedate}}</span><br>
-  <div ng-show="editD">
-    <input type="date" ng-model="editDueDatemodel">
-    <button ng-click="editDate()">Edit</button>
-  </div>
+        <span ng-click="editButtonsDate()">Due Date: {{duedate}}</span><br>
+        <div ng-show="editD">
+          <input type="date" ng-model="editDueDatemodel">
+          <button ng-click="editDate()">Edit</button>
+        </div>
 
-  <span ng-click="editButtonsC()">Complete: {{complete}}</span><br>
-  <div ng-show="editC">
-    <input type="checkbox" ng-checked="complete" ng-model="editCompletemodel">
-    <button ng-click="editComplete()">Edit</button>
-  </div>
+        <span ng-click="editButtonsC()">Complete: {{complete}}</span><br>
+        <div ng-show="editC">
+          <input type="checkbox" ng-checked="complete" ng-model="editCompletemodel">
+          <button ng-click="editComplete()">Edit</button>
+        </div>
 
-  <span ng-click="editButtonsH()">Hard Date: {{harddate}}</span><br>
-  <div ng-show="editH">
-    <input type="checkbox" ng-checked="harddate" ng-model="editHarddatemodel">
-    <button ng-click="editHarddate()">Edit</button>
-  </div>
+        <span ng-click="editButtonsH()">Hard Date: {{harddate}}</span><br>
+        <div ng-show="editH">
+          <input type="checkbox" ng-checked="harddate" ng-model="editHarddatemodel">
+          <button ng-click="editHarddate()">Edit</button>
+        </div>
 
-  <span ng-click="editButtonsN()">Notes: {{notes}}</span><br>
-  <div ng-show="editN">
-    <input type="text" ng-model="editNotesmodel">
-    <button ng-click="editNotes()">Edit</button>
-  </div>
+        <span ng-click="editButtonsN()">Notes: {{notes}}</span><br>
+        <div ng-show="editN">
+          <input type="text" ng-model="editNotesmodel">
+          <button ng-click="editNotes()">Edit</button>
+        </div>
 
-  <button ng-click="deleteJob()">Delete Job</button>
+        <button ng-click="deleteJob()">Delete Job</button>
+      </div>
+    </div>
+  </div>
 </div>
