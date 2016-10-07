@@ -1,8 +1,8 @@
 <div class="dayview">
   <div class="job firstjob"><a href="#day">{{currentDay}}</a></div>
-  <div class="job" ng-repeat="job in currentDayJobs | orderBy: [compareComplete, compareHardDate]" ng-class="{'harddate': job.harddate, 'complete': job.complete}">
+  <div class="jobindayview" ng-repeat="job in currentDayJobs | orderBy: [compareComplete, compareHardDate]" ng-class="{'harddate': job.harddate, 'complete': job.complete}">
     <a href="#edit">
-      <span ng-click="updateThis(job.id)">{{job.company}} Pieces:{{job.pieces}} Notes: {{job.notes}}{{job.complete}}</span></a>
+      <span ng-click="updateThis(job.id)">Company: {{job.company}}<br> Pieces:{{job.pieces}}<br> Notes: {{job.notes}}</span></a>
         <div class="deleteedit"><button ng-click="delete(job.id)">x</button><input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)" ></div>
   </div>
 </div>
