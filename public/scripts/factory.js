@@ -117,6 +117,14 @@ myApp.factory('factory', ['$http', function($http){
     });
   };
 
+  var searchForJobs = function (search) {
+
+    return $http({
+      method: 'GET',
+      url: '/search?search=' + search
+    });
+  };
+
 
   return {
     getAll: getAll,
@@ -134,7 +142,8 @@ myApp.factory('factory', ['$http', function($http){
     currentDay: function () {
       return currentDay;
     },
-    changeCurrentDay: changeCurrentDay
+    changeCurrentDay: changeCurrentDay,
+    searchForJobs: searchForJobs
   };
 
 }]);

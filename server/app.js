@@ -186,4 +186,29 @@ app.post('/editdate', urlencodedParser, function (req, res) {
     }
   });
 });
+
+
+app.get('/search', function (req, res) {
+  console.log('in get /search');
+  pg.connect(connectionString, function (err, client, done) {
+      if (err){
+        console.log(err);
+      }else{
+        var searchedjobs = [];
+        var searchThis = '%' + req.query.search + '%';
+        var queryResults = client.query('SELECT * FROM jobs WHERE company LIKE $1', [searchThis]);
+        //console.log(queryResults);
+        queryResults.on('row', function (row) {
+          searchedjobs.push(row);
+          //console.log('alljobs', alljobs[0]);
+        });
+        queryResults.on('end', function () {
+          done();
+          return res.json(searchedjobs);
+          //end queryResults function
+        });//end queryResults on function
+      }//end else
+  });//end pg connect
+});//end app.get
+
 app.use(express.static('public'));
