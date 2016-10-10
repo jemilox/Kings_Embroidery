@@ -126,6 +126,8 @@ myApp.factory('factory', ['$http', function($http){
   };
 
 
+
+
   return {
     getAll: getAll,
     deletejob: deletejob,

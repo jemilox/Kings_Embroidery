@@ -1,4 +1,22 @@
-<p>In Search</p>
 
-<input type="text" ng-model="searchText">
+<input type="text" ng-model="searchText" placeholder="Company Name">
+
+<label>From</label>
+<input type="date" ng-model="dateSearchFirst">
+<label>To</label>
+<input type="date" ng-model="dateSearchSecond">
 <button ng-click="searchJobs()">Search</button>
+
+<div class="dayview">
+  <div class="job firstjob"><a href="#day">Search: {{searchText}}</a></div>
+  <div class="jobindayview" ng-repeat="job in searchedJobs | orderBy: [compareDueDate, compareComplete, compareHardDate ]" ng-class="{'harddate': job.harddate, 'complete': job.complete}">
+    <a href="#edit">
+      <span ng-click="updateThis(job.id)">Date: {{job.duedate}}<br>Company: {{job.company}}<br> Pieces:{{job.pieces}}<br> Notes: {{job.notes}}</span></a>
+        <div class="deleteedit"><button ng-click="delete(job.id)">x</button><input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)" ></div>
+  </div>
+  <div class="jobindayview" ng-repeat="job in tripleSearchedJobs | orderBy: [compareDueDate, compareComplete, compareHardDate]" ng-class="{'harddate': job.harddate, 'complete': job.complete}">
+    <a href="#edit">
+      <span ng-click="updateThis(job.id)">Date: {{job.duedate}}<br>Company: {{job.company}}<br> Pieces:{{job.pieces}}<br> Notes: {{job.notes}}</span></a>
+        <div class="deleteedit"><button ng-click="delete(job.id)">x</button><input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)" ></div>
+  </div>
+</div>

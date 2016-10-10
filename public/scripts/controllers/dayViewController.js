@@ -86,7 +86,7 @@ myApp.controller('dayViewController', ['$scope', '$http', 'moment', 'factory', f
     }
 
   };
-
+  //order by check for true or false on each array item
   $scope.compareComplete = function (arg) {
     return arg.complete === true;
   };
