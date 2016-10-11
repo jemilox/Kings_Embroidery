@@ -121,7 +121,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
       if($scope.allEmployees[i].name === $scope.editNamemodel){
         factory.editName($scope.allEmployees[i].empid).then(function (results) {
           console.log('made it back from edit');
-          $scope.editName = false;
+          $scope.editNam = false;
         }).then( function(){
           getAll();
         });
