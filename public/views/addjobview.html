@@ -21,3 +21,29 @@
         </div>
       </div>
     </div>
+    <div class="container">
+      <div class="addjobbox">
+        <div class="addemp">
+          <div class="addemptwo">
+            <div>
+              <label>Employee Name:</label><input type="text"  ng-model="employee">
+              <button ng-click="addEmployee()">Add Employee</button>
+            </div>
+            <div>
+              <label id="archive">Archive Employee:</label>
+              <select ng-model="editArchivemodel">
+                <option ng-repeat="employees in allEmployees">{{employees.name}}</option>>
+              </select>
+              <button ng-click="archiveEmployee()">Archive Employee</button>
+            </div>
+          </div>
+          <div class="displayEmpSuccess" ng-show="empSuccess">
+            <p>{{employeeSelected}} successfully added!<br>
+            </p>
+          </div>
+          <div class="displayEmpSuccess" ng-show="archiveSuccess">
+            <p>{{employeeArchived}} successfully archived!<br>
+            </p>
+        </div>
+      </div>
+    </div>

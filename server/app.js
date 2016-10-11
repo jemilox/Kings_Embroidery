@@ -90,6 +90,27 @@ app.post('/newjob', urlencodedParser, function (req, res) {
   //create variables from req
 });
 
+app.post('/newemployee', urlencodedParser, function (req, res) {
+  console.log('in .post newemployee');
+  console.log('req.body', req.body.name);
+  var name = req.body.name;
+  console.log(name);
+  pg.connect(connectionString, function (err, client, done) {
+      if (err){
+        console.log(err);
+      }else{
+        console.log('connected to database');
+        var queryResults = client.query('INSERT INTO employees (name, archived) VALUES($1, $2)', [name, false]);
+        queryResults.on('end', function () {
+          done();
+          res.send({success: true});
+        });//end query
+      }//end else
+    });//end pg conect
+
+  //create variables from req
+});
+
 app.delete('/delete', urlencodedParser, function (req, res) {
   console.log('in delete');
   console.log(req.body.id);
@@ -220,6 +241,22 @@ app.post('/editname', urlencodedParser, function (req, res) {
     }else{
       console.log('connected to db in edit');
       client.query('UPDATE jobs SET employeeid = $1 WHERE id = $2', [employeeid, id]);
+      done();
+      res.send({success: true});
+    }
+  });
+});
+
+app.post('/archive', urlencodedParser, function (req, res) {
+  console.log('in archive post');
+  console.log(req.body);
+  var id = req.body.id;
+  pg.connect(connectionString, function (err, client, done) {
+    if (err){
+      console.log(err);
+    }else{
+      console.log('connected to db in edit');
+      client.query('UPDATE employees SET archived = $1 WHERE empid = $2', [true, id]);
       done();
       res.send({success: true});
     }

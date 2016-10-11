@@ -147,7 +147,19 @@ myApp.factory('factory', ['$http', function($http){
     });
   };
 
+  var archiveEmployee = function (number) {
 
+    var objectToSend = {
+      id: number,
+      archived: true
+    };
+
+    return $http({
+      method: 'POST',
+      url: '/archive',
+      data: objectToSend
+    });
+  };
 
 
   return {
@@ -169,7 +181,8 @@ myApp.factory('factory', ['$http', function($http){
     changeCurrentDay: changeCurrentDay,
     searchForJobs: searchForJobs,
     getEmployees: getEmployees,
-    editName: editName
+    editName: editName,
+    archiveEmployee: archiveEmployee
   };
 
 }]);
