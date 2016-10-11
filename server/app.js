@@ -27,7 +27,7 @@ app.get('/all', function (req, res) {
         console.log(err);
       }else{
         var alljobs = [];
-        var queryResults = client.query('SELECT * FROM jobs');
+        var queryResults = client.query('SELECT * FROM jobs LEFT JOIN employees ON jobs.employeeid=employees.empid');
         //console.log(queryResults);
         queryResults.on('row', function (row) {
           alljobs.push(row);
@@ -36,6 +36,28 @@ app.get('/all', function (req, res) {
         queryResults.on('end', function () {
           done();
           return res.json(alljobs);
+          //end queryResults function
+        });//end queryResults on function
+      }//end else
+  });//end pg connect
+});//end app.get
+
+app.get('/employees', function (req, res) {
+  console.log('in get /employees');
+  pg.connect(connectionString, function (err, client, done) {
+      if (err){
+        console.log(err);
+      }else{
+        var allemployees = [];
+        var queryResults = client.query('SELECT * FROM employees');
+        //console.log(queryResults);
+        queryResults.on('row', function (row) {
+          allemployees.push(row);
+          //console.log('alljobs', alljobs[0]);
+        });
+        queryResults.on('end', function () {
+          done();
+          return res.json(allemployees);
           //end queryResults function
         });//end queryResults on function
       }//end else
@@ -181,6 +203,23 @@ app.post('/editdate', urlencodedParser, function (req, res) {
     }else{
       console.log('connected to db in edit');
       client.query('UPDATE jobs SET duedate = $1 WHERE id = $2', [duedate, id]);
+      done();
+      res.send({success: true});
+    }
+  });
+});
+
+app.post('/editname', urlencodedParser, function (req, res) {
+  console.log('in edit post');
+  console.log(req.body);
+  var id = req.body.id;
+  var employeeid = req.body.employeeid;
+  pg.connect(connectionString, function (err, client, done) {
+    if (err){
+      console.log(err);
+    }else{
+      console.log('connected to db in edit');
+      client.query('UPDATE jobs SET employeeid = $1 WHERE id = $2', [employeeid, id]);
       done();
       res.send({success: true});
     }

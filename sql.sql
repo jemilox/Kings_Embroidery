@@ -50,3 +50,5 @@ CREATE TABLE jobs (
 		INSERT INTO jobs (company, duedate, pieces, complete, harddate, notes) VALUES ('MEOW', '10/5/16', 76, false, true, 'Dont forget...');
 		INSERT INTO jobs (company, duedate, pieces, complete, harddate, notes) VALUES ('MEOW', '10/6/16', 76, true, false, 'Dont forget...');
 		INSERT INTO jobs (company, duedate, pieces, complete, harddate, notes) VALUES ('MEOW', '10/7/16', 76, false, true, 'Dont forget...');
+
+SELECT * FROM jobs LEFT JOIN employees ON jobs.employeeid=employees.id;

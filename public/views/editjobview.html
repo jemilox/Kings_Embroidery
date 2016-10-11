@@ -38,6 +38,14 @@
           <button ng-click="editNotes()">Edit</button>
         </div>
 
+        <span ng-click="editButtonsName()">Employee: {{name}}</span><br>
+        <div ng-show="editNam">
+          <select ng-model="editNamemodel">
+            <option ng-repeat="employees in allEmployees" >{{employees.name}}</option>>
+          </select>
+          <button ng-click="editName()">Edit</button>
+        </div>
+
         <button ng-click="deleteJob()">Delete Job</button>
       </div>
     </div>

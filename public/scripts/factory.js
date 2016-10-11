@@ -12,6 +12,14 @@ myApp.factory('factory', ['$http', function($http){
     });
   };
 
+  var getEmployees = function () {
+
+    return $http({
+      method: 'GET',
+      url: '/employees'
+    });
+  };
+
   var deletejob = function (objectToSend) {
 
     return $http({
@@ -43,6 +51,20 @@ myApp.factory('factory', ['$http', function($http){
     return $http({
       method: 'POST',
       url: '/edit',
+      data: objectToSend
+    });
+  };
+
+  var editName = function (number) {
+
+    var objectToSend = {
+      id: currentJobId,
+      employeeid: number
+    };
+
+    return $http({
+      method: 'POST',
+      url: '/editname',
       data: objectToSend
     });
   };
@@ -145,7 +167,9 @@ myApp.factory('factory', ['$http', function($http){
       return currentDay;
     },
     changeCurrentDay: changeCurrentDay,
-    searchForJobs: searchForJobs
+    searchForJobs: searchForJobs,
+    getEmployees: getEmployees,
+    editName: editName
   };
 
 }]);
