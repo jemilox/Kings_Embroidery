@@ -19,7 +19,13 @@
   <body ng-app="myApp">
     <div class="row headerClass">
       <div class="kingsTitle"><a href="#home"><h1>King's Embroidery</h1></a></div>
-      <div class="plus" id="addbutton"><a href="#search">Search</a><a href="#addjob">+</a></div>
+      <div class="plus" id="addbutton">
+        <a href="#search">
+          <span id="search">Search</span>
+        </a>
+        <a href="#addjob"><span id="pluses">+</span>
+        </a>
+      </div>
     </div>
     <div ng-view class="container">
     </div>
