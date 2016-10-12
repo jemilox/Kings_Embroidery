@@ -18,6 +18,15 @@
   </head>
   <body ng-app="myApp">
     <div class="row headerClass">
+      <div class="dropdown">
+        <button ng-click="dropdown()" class="dropbtn">&#9776</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="#day">By Day</a>
+          <a href="#home">Home</a>
+          <a href="#addjob">Add</a>
+          <a href="#search">Search</a>
+        </div>
+      </div>
       <div class="kingsTitle"><a href="#home"><h1>King's Embroidery</h1></a></div>
       <div class="plus" id="addbutton">
         <a href="#search">

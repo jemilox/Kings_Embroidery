@@ -21,6 +21,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
 
   $scope.allJobs = [];
   $scope.allEmployees = [];
+  $scope.activeEmployees = [];
 
   //get all from factory find job from id that was clicked
   var getAll = function () {
@@ -57,9 +58,15 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     return factory.getEmployees().then(function (results) {
       //save get from factory into allJobs
       $scope.allEmployees = [];
+      $scope.activeEmployees = [];
       $scope.allEmployees = results.data;
       console.log('in edit allEmployees results', $scope.allEmployees);
-
+      for (var i = 0; i < $scope.allEmployees.length; i++) {
+        if (!$scope.allEmployees[i].archived){
+          $scope.activeEmployees.push($scope.allEmployees[i]);
+        }
+      }
+      console.log($scope.activeEmployees);
 
     });
   };

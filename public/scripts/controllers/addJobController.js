@@ -8,7 +8,7 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
   $scope.empSuccess = false;
   $scope.archiveSuccess = false;
   $scope.allEmployees = [];
-
+  $scope.activeEmployees = [];
   // var m = moment();
   // console.log(m);
   //
@@ -20,9 +20,15 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
     return factory.getEmployees().then(function (results) {
       //save get from factory into allJobs
       $scope.allEmployees = [];
+      $scope.activeEmployees = [];
       $scope.allEmployees = results.data;
       console.log('in edit allEmployees results', $scope.allEmployees);
-
+      for (var i = 0; i < $scope.allEmployees.length; i++) {
+        if (!$scope.allEmployees[i].archived){
+          $scope.activeEmployees.push($scope.allEmployees[i]);
+        }
+      }
+      console.log($scope.activeEmployees);
 
     });
   };
@@ -39,7 +45,7 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
         });
       }
     }
-
+    getEmployees();
   };
 
   $scope.addjob = function () {

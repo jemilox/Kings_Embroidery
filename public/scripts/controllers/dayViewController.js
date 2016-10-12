@@ -32,7 +32,7 @@ myApp.controller('dayViewController', ['$scope', '$http', 'moment', 'factory', f
       $scope.alljobs = results.data;
       $scope.alljobs = $scope.alljobs.map(function (index) {
         var m = moment(index.duedate).format('M/D/YY');
-        return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate, notes: index.notes};
+        return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate, notes: index.notes, name: index.name};
       });//end map function
       //console.log($scope.alljobs);
       console.log('after map function', $scope.alljobs);

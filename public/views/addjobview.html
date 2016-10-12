@@ -32,7 +32,7 @@
             <div>
               <label id="archive">Archive Employee:</label>
               <select ng-model="editArchivemodel">
-                <option ng-repeat="employees in allEmployees">{{employees.name}}</option>>
+                <option ng-repeat="employees in activeEmployees">{{employees.name}}</option>>
               </select>
               <button ng-click="archiveEmployee()">Archive Employee</button>
             </div>
