@@ -1,9 +1,10 @@
 
 myApp.constant('moment', moment);
 
-myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', function ($scope, $http, moment, factory){
+myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q', function ($scope, $http, moment, factory, $q){
   console.log('in homeController');
 
+  $scope.dropDownContent = false;
 
   $scope.dateMonOne = moment().day(1).format('M/D/YY');
   $scope.dateTuesOne = moment().day(2).format('M/D/YY');
@@ -120,6 +121,39 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', func
   $scope.compareHardDate = function (arg) {
     return arg.harddate === false;
   };
+
+  $scope.windowClick = function(event) {
+    console.log('in window click');
+    if ($scope.dropDownContent){
+      console.log('mew');
+      $scope.dropDownContent = false;
+    }
+
+  };
+
+  var droppedDown = false;
+
+  $scope.dropDown = function () {
+    var timer = function(){
+      return $q(function(resolve, reject){
+        setTimeout(function () {
+          resolve();
+        }, 50);
+      });
+    };
+    timer().then(function(){
+      if (droppedDown) {
+        droppedDown = false;
+      }
+      else {
+        $scope.dropDownContent = true;
+        droppedDown = true;
+      }
+      console.log('in dropDown click');
+    });
+  };
+
+
 
   //run get all at page load
   $scope.getAll();
