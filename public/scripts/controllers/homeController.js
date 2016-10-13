@@ -32,7 +32,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
         var m = moment(index.duedate).format('M/D/YY');
         return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate};
       });//end map function
-      //console.log($scope.alljobs);
+      console.log($scope.alljobs);
 
           $scope.monOneJobs = [];
           $scope.tuesOneJobs = [];

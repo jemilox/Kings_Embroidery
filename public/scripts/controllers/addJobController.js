@@ -69,7 +69,7 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
 
 
     console.log('objectToSend', objectToSend);
-
+  
     $http({
       method: 'POST',
       url: '/newjob',
