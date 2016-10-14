@@ -20,7 +20,7 @@ $scope.searchJobs = function () {
       $scope.tripleSearchedJobs = [];
       $scope.searchedJobs = results.data;
       $scope.searchedJobs = $scope.searchedJobs.map(function (index) {
-        var m = moment(index.duedate).format('M/D/YY');
+        var m = moment.utc(index.duedate).format('M/D/YY');
         return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate, notes: index.notes};
       });//end map function
       //console.log($scope.alljobs);
@@ -37,7 +37,7 @@ $scope.searchJobs = function () {
       $scope.searchedJobs = [];
       $scope.tripleSearchedJobs = results.data;
       $scope.tripleSearchedJobs = $scope.tripleSearchedJobs.map(function (index) {
-        var m = moment(index.duedate).format('M/D/YY');
+        var m = moment.utc(index.duedate).format('M/D/YY');
         return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate, notes: index.notes};
       });//end map function
       //console.log($scope.alljobs);

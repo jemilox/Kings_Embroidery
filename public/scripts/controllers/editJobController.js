@@ -41,7 +41,7 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
           $scope.id = $scope.allJobs[i].id;
           $scope.company = $scope.allJobs[i].company;
           $scope.pieces = $scope.allJobs[i].pieces;
-          $scope.duedate = moment($scope.allJobs[i].duedate).format('M/D/YY');
+          $scope.duedate = moment.utc($scope.allJobs[i].duedate).format('M/D/YY');
           $scope.complete = !!$scope.allJobs[i].complete;
           $scope.harddate = !!$scope.allJobs[i].harddate;
           $scope.notes = $scope.allJobs[i].notes;

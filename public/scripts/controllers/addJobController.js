@@ -69,7 +69,7 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
 
 
     console.log('objectToSend', objectToSend);
-  
+
     $http({
       method: 'POST',
       url: '/newjob',
@@ -79,7 +79,7 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
       console.log('results.success', results.data.success);
       if (results.data.success){
         $scope.job = objectToSend.company;
-        $scope.date = moment(objectToSend.duedate).format('MM/DD/YY');
+        $scope.date = moment.utc(objectToSend.duedate).format('MM/DD/YY');
         $scope.number = objectToSend.pieces;
         $scope.complete = false;
         $scope.harddate = objectToSend.harddate;
