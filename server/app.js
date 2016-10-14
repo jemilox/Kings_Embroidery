@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded( {extended: false});
 var portDecision = process.env.PORT || 3000;
 var pg = require('pg');
-var connectionString = 'postgres://qcbukfyymarnjk:m-RpgtxWL3wdn4t5IeB812dCBy@ec2-54-225-117-56.compute-1.amazonaws.com:5432/dedg30n045smeh';
+var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/jobstwo';
 
 app.use(bodyParser.json());
 
