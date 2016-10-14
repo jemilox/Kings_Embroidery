@@ -18,11 +18,12 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
   $scope.dateFriTwo = moment().day(12).format('M/D/YY');
 
 
-
+  $scope.alljobs = [];
 
   $scope.getAll = function () {
     console.log('in getall');
     //clear data
+    $scope.alljobs = [];
     factory.getAll().then(function(results){
       console.log('made it to then');
       console.log('results.success', results.data);
@@ -153,7 +154,23 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
     });
   };
 
+  // //complete function update complete status
+  $scope.jobComplete = function (id) {
+    console.log('in jobComplete click', id);
+    factory.changeCurrentJobId(id);
+    for (var k = 0; k < $scope.alljobs.length; k++) {
+      if($scope.alljobs[k].id == id){
+        console.log($scope.alljobs[k]);
+        var sendtrue = $scope.alljobs[k].complete;
+        factory.editComplete(sendtrue).then(function () {
+          console.log('made it to then');
+          $scope.getAll();
 
+        });
+      }
+    }
+
+  };
 
   //run get all at page load
   $scope.getAll();
