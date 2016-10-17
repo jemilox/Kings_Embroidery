@@ -68,6 +68,15 @@ footer {
   display: flex;
   align-items: center;
   padding: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+  .job {font-size: .5em;}
 }
 
 .jobindayview {
@@ -93,6 +102,7 @@ footer {
   margin: 0;
   width: 40vw;
   position: absolute;
+  white-space: nowrap;
 }
 h1 {
   font-size: 3em;
