@@ -20,8 +20,18 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
   $scope.dateThursTwo = moment().day(11).format('M/D/YY');
   $scope.dateFriTwo = moment().day(12).format('M/D/YY');
 
-
+  $scope.futureJobs = [];
   $scope.alljobs = [];
+
+  $scope.futureJobsfunction = function (thisJob) {
+    console.log('in futureJobs', thisJob.duedate, Date.parse(thisJob.duedate), $scope.dateFriTwo);
+    var parsed = Date.parse(thisJob.duedate);
+    var afterFriday = Date.parse($scope.dateFriTwo);
+    if (parsed > afterFriday){
+      $scope.futureJobs.push(thisJob);
+      console.log($scope.futureJobs);
+    }
+  };
 
   $scope.getAll = function () {
     console.log('in getall');
@@ -48,6 +58,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
           $scope.wedTwoJobs = [];
           $scope.thursTwoJobs = [];
           $scope.friTwoJobs = [];
+          $scope.futureJobs = [];
 
           $scope.allJobArrays = [$scope.monOneJobs, $scope.tuesOneJobs, $scope.wedOneJobs, $scope.thursOneJobs,
             $scope.friOneJobs, $scope.monTwoJobs, $scope.tuesTwoJobs, $scope.wedTwoJobs, $scope.thursTwoJobs,
@@ -85,6 +96,8 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
           case $scope.dateFriTwo:
             $scope.friTwoJobs.push($scope.alljobs[i]);
             break;
+          default:
+            $scope.futureJobsfunction($scope.alljobs[i]);
         }//end switch
       }//end for loop
 
@@ -124,6 +137,10 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
 
   $scope.compareHardDate = function (arg) {
     return arg.harddate === false;
+  };
+
+  $scope.compareDueDate = function (arg) {
+    return Date.parse(arg.duedate);
   };
 
   $scope.windowClick = function(event) {
@@ -174,6 +191,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
     }
 
   };
+
 
   //run get all at page load
   $scope.getAll();
