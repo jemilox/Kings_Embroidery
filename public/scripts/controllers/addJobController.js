@@ -111,6 +111,7 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
       console.log('results.success', results.data.success);
 
         $scope.employeeSelected = objectToSend.name;
+        console.log('in new employee', $scope.employeeSelected, objectToSend.name);
         $scope.empSuccess = true;
     });//end then
   };//end addjob function
