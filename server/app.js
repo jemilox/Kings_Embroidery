@@ -1,16 +1,18 @@
 var express = require('express');
 var app = express();
+var http = require('http').Server(app);
 var path = require('path');
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded( {extended: false});
 var portDecision = process.env.PORT || 3000;
 var pg = require('pg');
 var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/jobstwo';
+var io = require('socket.io')(http);
 
 app.use(bodyParser.json());
 
-app.listen( portDecision, function () {
-  console.log("3000 is up!");
+http.listen( portDecision, function () {
+  console.log(portDecision + " is up!");
 });//end server up
 
 app.get('/', urlencodedParser, function (req, res) {
@@ -173,6 +175,7 @@ app.post('/editcomplete', urlencodedParser, function (req, res) {
     }else{
       console.log('connected to db in edit');
       client.query('UPDATE jobs SET complete = $1 WHERE id = $2', [complete, id]);
+      io.emit('pingRefresh');
       done();
       res.send({success: true});
     }

@@ -1,8 +1,11 @@
 
 myApp.constant('moment', moment);
 
+var socket = io();
+
 myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q', function ($scope, $http, moment, factory, $q){
   console.log('in homeController');
+
 
   $scope.dropDownContent = false;
 
@@ -174,5 +177,10 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
 
   //run get all at page load
   $scope.getAll();
+
+  socket.on('pingRefresh', function () {
+    $scope.getAll();
+  });
+
 
 }]);//end controller
