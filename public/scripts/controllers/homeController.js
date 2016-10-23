@@ -24,7 +24,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
   $scope.alljobs = [];
 
   $scope.futureJobsfunction = function (thisJob) {
-    console.log('in futureJobs', thisJob.duedate, Date.parse(thisJob.duedate), $scope.dateFriTwo);
+    //console.log('in futureJobs', thisJob.duedate, Date.parse(thisJob.duedate), $scope.dateFriTwo);
     var parsed = Date.parse(thisJob.duedate);
     var afterFriday = Date.parse($scope.dateFriTwo);
     if (parsed > afterFriday){

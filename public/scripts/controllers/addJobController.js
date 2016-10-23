@@ -50,6 +50,17 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
 
   $scope.addjob = function () {
     console.log('in addjob');
+    console.log('in addjob', $scope.employeeModel);
+
+    for (var i = 0; i < $scope.activeEmployees.length; i++) {
+      if($scope.activeEmployees[i].name === $scope.employeeModel){
+        $scope.sendThisEmployee = $scope.activeEmployees[i].empid;
+        console.log('in if statement', $scope.sendThisEmployee);
+        $scope.empNameDisplay = $scope.employeeModel;
+      }
+
+    };
+
 
     var objectToSend = {
       company : $scope.company,
@@ -57,7 +68,8 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
       pieces: $scope.pieces,
       complete: false,
       harddate: $scope.harddate || false,
-      notes: $scope.notes
+      notes: $scope.notes,
+      employeeid: $scope.sendThisEmployee
 
     };//end objectToSend
 
@@ -66,6 +78,7 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
     $scope.duedate = "";
     $scope.harddate = "";
     $scope.notes = "";
+    $scope.employeeModel = "";
 
 
     console.log('objectToSend', objectToSend);
@@ -85,7 +98,7 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
         $scope.harddate = objectToSend.harddate;
         $scope.notes = objectToSend.notes;
         $scope.success = true;
-
+        $scope.empAdded = objectToSend.employeeid;
       }//end if
     });//end then
   };//end addjob function
@@ -110,9 +123,10 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
       console.log('made it to then');
       console.log('results.success', results.data.success);
 
-        $scope.employeeSelected = objectToSend.name;
-        console.log('in new employee', $scope.employeeSelected, objectToSend.name);
-        $scope.empSuccess = true;
+      $scope.employeeSelected = objectToSend.name;
+      console.log('in new employee', $scope.employeeSelected, objectToSend.name);
+      $scope.empSuccess = true;
+      getEmployees();
     });//end then
   };//end addjob function
 

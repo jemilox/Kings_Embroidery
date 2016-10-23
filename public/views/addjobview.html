@@ -6,6 +6,8 @@
           <label>Date:</label><input type="date" ng-model="duedate">
           <label>Number of Pieces:</label><input type="number"  ng-model="pieces">
           <label>Hard Date:</label> <input type="checkbox" ng-model="harddate"> Yes<br>
+          <label>Select Employee:</label>
+            <select ng-model="employeeModel"><option ng-repeat="employees in activeEmployees">{{employees.name}}</option></select><br>
           <label>Notes:</label><br>
           <textarea name="Text1" cols="80" rows="2"  ng-model="notes"></textarea><br>
 
@@ -16,7 +18,8 @@
             Due Date: {{date}}<br>
             Completed: False <br>
             Hard Date: {{harddate}}<br>
-            Notes: {{notes}}</p>
+            Notes: {{notes}}<br>
+            Employee: {{empNameDisplay}}</p>
           </div>
         </div>
       </div>
@@ -32,7 +35,7 @@
             <div>
               <label id="archive">Archive Employee:</label>
               <select ng-model="editArchivemodel">
-                <option ng-repeat="employees in activeEmployees">{{employees.name}}</option>>
+                <option ng-repeat="employees in activeEmployees">{{employees.name}}</option>
               </select>
               <button ng-click="archiveEmployee()">Archive Employee</button>
             </div>
