@@ -68,7 +68,7 @@ app.get('/employees', function (req, res) {
 
 app.post('/newjob', urlencodedParser, function (req, res) {
   console.log('in .post newjob');
-  console.log('req.body', req.body.company);
+  console.log('req.body', req.body.inprogress);
   var company = req.body.company;
   var duedate = req.body.duedate;
   var pieces = req.body.pieces;
@@ -76,13 +76,14 @@ app.post('/newjob', urlencodedParser, function (req, res) {
   var harddate = req.body.harddate;
   var notes = req.body.notes;
   var employee = req.body.employeeid;
-  console.log(company, duedate, pieces, employee);
+  var inprogress = req.body.inprogress;
+  console.log(company, duedate, pieces, employee, inprogress);
   pg.connect(connectionString, function (err, client, done) {
       if (err){
         console.log(err);
       }else{
         console.log('connected to database');
-        var queryResults = client.query('INSERT INTO jobs (company, duedate, pieces, complete, harddate, notes, employeeid) VALUES($1, $2, $3, $4, $5, $6, $7)', [company, duedate, pieces, complete, harddate, notes, employee]);
+        var queryResults = client.query('INSERT INTO jobs (company, duedate, pieces, complete, harddate, notes, employeeid, inprogress) VALUES($1, $2, $3, $4, $5, $6, $7, $8)', [company, duedate, pieces, complete, harddate, notes, employee, inprogress]);
         queryResults.on('end', function () {
           io.emit('pingRefresh');
           done();
@@ -186,6 +187,26 @@ app.post('/editcomplete', urlencodedParser, function (req, res) {
     }
   });
 });//end edit complete
+
+app.post('/editinprogress', urlencodedParser, function (req, res) {
+  console.log('in edit post inprogress');
+  console.log(req.body);
+  var id = req.body.id;
+  var inprogress = req.body.inprogress;
+  pg.connect(connectionString, function (err, client, done) {
+    if (err){
+      console.log(err);
+    }else{
+      console.log('connected to db in edit inprogress');
+      client.query('UPDATE jobs SET inprogress = $1 WHERE id = $2', [inprogress, id]);
+      io.emit('pingRefresh');
+      done();
+      res.send({success: true});
+    }
+  });
+});//end edit complete
+
+
 //edit harddate
 app.post('/editharddate', urlencodedParser, function (req, res) {
   console.log('in edit post harddate');

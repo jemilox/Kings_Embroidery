@@ -29,7 +29,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
     var afterFriday = Date.parse($scope.dateFriTwo);
     if (parsed > afterFriday){
       $scope.futureJobs.push(thisJob);
-      console.log($scope.futureJobs);
+      //console.log($scope.futureJobs);
     }
   };
 
@@ -39,14 +39,14 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
     $scope.alljobs = [];
     factory.getAll().then(function(results){
       console.log('made it to then');
-      console.log('results.success', results.data);
+      //console.log('results.success', results.data);
       //array of alljobs from db
       $scope.alljobs = results.data;
       $scope.alljobs = $scope.alljobs.map(function (index) {
         var m = moment.utc(index.duedate).format('M/D/YY');
-        return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate};
+        return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate, inprogress: index.inprogress};
       });//end map function
-      console.log($scope.alljobs);
+      //console.log($scope.alljobs);
 
           $scope.monOneJobs = [];
           $scope.tuesOneJobs = [];
@@ -192,7 +192,21 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
 
   };
 
-
+ $scope.jobInProgress = function (jobid) {
+   console.log('in jobInProgress', jobid);
+   factory.changeCurrentJobId(jobid);
+   for (var k = 0; k < $scope.alljobs.length; k++) {
+     if($scope.alljobs[k].id == jobid){
+       console.log($scope.alljobs[k]);
+       var sendtrue = $scope.alljobs[k].inprogress;
+       console.log('sendtrue', sendtrue);
+       factory.editInProgress(sendtrue).then(function () {
+         console.log('made it to then');
+         $scope.getAll();
+       });
+     }
+   }
+ };
   //run get all at page load
   $scope.getAll();
 

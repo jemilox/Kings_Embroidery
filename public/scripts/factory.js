@@ -97,6 +97,20 @@ myApp.factory('factory', ['$http', function($http){
     });
   };
 
+  var editInProgress = function (number) {
+
+    var objectToSend = {
+      id: currentJobId,
+      inprogress: number
+    };
+
+    return $http({
+      method: 'POST',
+      url: '/editinprogress',
+      data: objectToSend
+    });
+  };
+
   var editNotes = function (number) {
 
     var objectToSend = {
@@ -182,7 +196,8 @@ myApp.factory('factory', ['$http', function($http){
     searchForJobs: searchForJobs,
     getEmployees: getEmployees,
     editName: editName,
-    archiveEmployee: archiveEmployee
+    archiveEmployee: archiveEmployee,
+    editInProgress: editInProgress
   };
 
 }]);

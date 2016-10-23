@@ -69,7 +69,8 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
       complete: false,
       harddate: $scope.harddate || false,
       notes: $scope.notes,
-      employeeid: $scope.sendThisEmployee
+      employeeid: $scope.sendThisEmployee,
+      inprogress: false
 
     };//end objectToSend
 

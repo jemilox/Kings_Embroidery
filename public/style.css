@@ -120,7 +120,9 @@ h1 {
 
 .deleteedit {
   float: right;
-  margin-left: auto;
+  margin: 0 0 0 auto;
+  padding: 0;
+  line-height: 70%;
 }
 
 button {
@@ -138,6 +140,12 @@ button {
 .complete {
   background-color: lightgrey;
   color: #B6A19E;
+}
+
+.inprogress {
+  border-style: solid;
+  border-width: 3px;
+  border-color: purple;
 }
 
 .addjob {
