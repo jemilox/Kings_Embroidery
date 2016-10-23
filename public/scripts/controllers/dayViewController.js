@@ -1,5 +1,7 @@
 myApp.constant('moment', moment);
 
+var socket = io();
+
 myApp.controller('dayViewController', ['$scope', '$http', 'moment', 'factory', function ($scope, $http, moment, factory){
   console.log('in homeController');
   console.log('in dayViewController');
@@ -94,6 +96,10 @@ myApp.controller('dayViewController', ['$scope', '$http', 'moment', 'factory', f
   $scope.compareHardDate = function (arg) {
     return arg.harddate === false;
   };
+
+  socket.on('pingRefresh', function () {
+    $scope.getAll();
+  });
 
   $scope.getAll();
 

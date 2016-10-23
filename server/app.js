@@ -84,6 +84,7 @@ app.post('/newjob', urlencodedParser, function (req, res) {
         console.log('connected to database');
         var queryResults = client.query('INSERT INTO jobs (company, duedate, pieces, complete, harddate, notes, employeeid) VALUES($1, $2, $3, $4, $5, $6, $7)', [company, duedate, pieces, complete, harddate, notes, employee]);
         queryResults.on('end', function () {
+          io.emit('pingRefresh');
           done();
           res.send({success: true});
         });//end query
@@ -124,6 +125,7 @@ app.delete('/delete', urlencodedParser, function (req, res) {
     }else{
       console.log('connected to database in delete');
       client.query('DELETE from jobs WHERE id = $1', [id]);
+      io.emit('pingRefresh');
       done();
       res.send({success: true});
     }
@@ -141,6 +143,7 @@ app.post('/edit', urlencodedParser, function (req, res) {
     }else{
       console.log('connected to db in edit');
       client.query('UPDATE jobs SET pieces = $1 WHERE id = $2', [pieces, id]);
+      io.emit('pingRefresh');
       done();
       res.send({success: true});
     }
@@ -159,6 +162,7 @@ app.post('/editnotes', urlencodedParser, function (req, res) {
     }else{
       console.log('connected to db in edit');
       client.query('UPDATE jobs SET notes = $1 WHERE id = $2', [notes, id]);
+      io.emit('pingRefresh');
       done();
       res.send({success: true});
     }
@@ -194,6 +198,7 @@ app.post('/editharddate', urlencodedParser, function (req, res) {
     }else{
       console.log('connected to db in edit');
       client.query('UPDATE jobs SET harddate = $1 WHERE id = $2', [harddate, id]);
+      io.emit('pingRefresh');
       done();
       res.send({success: true});
     }
@@ -211,6 +216,7 @@ app.post('/editcompany', urlencodedParser, function (req, res) {
     }else{
       console.log('connected to db in edit');
       client.query('UPDATE jobs SET company = $1 WHERE id = $2', [company, id]);
+      io.emit('pingRefresh');
       done();
       res.send({success: true});
     }
@@ -228,6 +234,7 @@ app.post('/editdate', urlencodedParser, function (req, res) {
     }else{
       console.log('connected to db in edit');
       client.query('UPDATE jobs SET duedate = $1 WHERE id = $2', [duedate, id]);
+      io.emit('pingRefresh');
       done();
       res.send({success: true});
     }
@@ -245,6 +252,7 @@ app.post('/editname', urlencodedParser, function (req, res) {
     }else{
       console.log('connected to db in edit');
       client.query('UPDATE jobs SET employeeid = $1 WHERE id = $2', [employeeid, id]);
+      io.emit('pingRefresh');
       done();
       res.send({success: true});
     }
@@ -261,6 +269,7 @@ app.post('/archive', urlencodedParser, function (req, res) {
     }else{
       console.log('connected to db in edit');
       client.query('UPDATE employees SET archived = $1 WHERE empid = $2', [true, id]);
+      io.emit('pingRefresh');
       done();
       res.send({success: true});
     }
