@@ -5,36 +5,36 @@
           <div class="day Monday">
             <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateMonOne)">Monday, {{dateMonOne}}<span></a></div>
             <div class="job" ng-repeat="job in monOneJobs | orderBy: [compareComplete, compareHardDate]" ng-class="{'harddate': job.harddate, 'complete': job.complete, 'inprogress': job.inprogress}">
-              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div>C<input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
-              <div>IP<input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
+              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div class = "greyInput"><input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
+              <div class="purpleInput"><input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
             </div>
           </div>
           <div class="day Tuesday">
             <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateTuesOne)">Tuesday, {{dateTuesOne}}<span></a></div>
             <div class="job" ng-repeat="job in tuesOneJobs | orderBy: [compareComplete, compareHardDate]" ng-class="{'harddate': job.harddate, 'complete': job.complete, 'inprogress': job.inprogress}">
-              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div>C<input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
-              <div>IP<input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
+              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div class = "greyInput"><input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
+              <div class="purpleInput"><input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
             </div>
           </div>
           <div class="day Wednesday">
             <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateWedOne)">Wednesday, {{dateWedOne}}<span></a></div>
             <div class="job" ng-repeat="job in wedOneJobs | orderBy: [compareComplete, compareHardDate]" ng-class="{'harddate': job.harddate, 'complete': job.complete, 'inprogress': job.inprogress}">
-              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div>C<input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
-              <div>IP<input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
+              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div class = "greyInput"><input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
+              <div class="purpleInput"><input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
             </div>
           </div>
           <div class="day Thursday">
             <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateThursOne)">Thursday, {{dateThursOne}}<span></a></div>
             <div class="job" ng-repeat="job in thursOneJobs | orderBy: [compareComplete, compareHardDate]" ng-class="{'harddate': job.harddate, 'complete': job.complete, 'inprogress': job.inprogress}">
-              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div>C<input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
-              <div>IP<input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
+              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div class = "greyInput"><input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
+              <div class="purpleInput"><input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
             </div>
           </div>
           <div class="day Friday">
             <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateFriOne)">Friday, {{dateFriOne}}<span></a></div>
             <div class="job" ng-repeat="job in friOneJobs | orderBy: [compareComplete, compareHardDate]" ng-class="{'harddate': job.harddate, 'complete': job.complete, 'inprogress': job.inprogress}">
-              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div>C<input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
-              <div>IP<input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
+              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div class = "greyInput"><input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
+              <div class="purpleInput"><input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
             </div>
           </div>
         </div>
@@ -44,36 +44,36 @@
           <div class="day Monday">
             <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateMonTwo)">Monday, {{dateMonTwo}}<span></a></div>
             <div class="job" ng-repeat="job in monTwoJobs | orderBy: [compareComplete, compareHardDate]" ng-class="{'harddate': job.harddate, 'complete': job.complete, 'inprogress': job.inprogress}">
-              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div>C<input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
-              <div>IP<input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
+              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div class = "greyInput"><input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
+              <div class="purpleInput"><input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
             </div>
           </div>
           <div class="day Tuesday">
             <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateTuesTwo)">Tuesday, {{dateTuesTwo}}<span></a></div>
             <div class="job" ng-repeat="job in tuesTwoJobs | orderBy: [compareComplete, compareHardDate]" ng-class="{'harddate': job.harddate, 'complete': job.complete, 'inprogress': job.inprogress}">
-              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div>C<input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
-              <div>IP<input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
+              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div class = "greyInput"><input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
+              <div class="purpleInput"><input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
             </div>
           </div>
           <div class="day Wednesday">
             <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateWedTwo)">Wednesday, {{dateWedTwo}}<span></a></div>
             <div class="job" ng-repeat="job in wedTwoJobs | orderBy: [compareComplete, compareHardDate]" ng-class="{'harddate': job.harddate, 'complete': job.complete, 'inprogress': job.inprogress}">
-              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div>C<input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
-              <div>IP<input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
+              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div class = "greyInput"><input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
+              <div class="purpleInput"><input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
             </div>
           </div>
           <div class="day Thursday">
             <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateThursTwo)">Thursday, {{dateThursTwo}}<span></a></div>
             <div class="job" ng-repeat="job in thursTwoJobs | orderBy: [compareComplete, compareHardDate]" ng-class="{'harddate': job.harddate, 'complete': job.complete, 'inprogress': job.inprogress}">
-              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div>C<input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
-              <div>IP<input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
+              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div class = "greyInput"><input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
+              <div class="purpleInput"><input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
             </div>
           </div>
           <div class="day Friday">
             <div class="job firstjob"><a href="#day"><span ng-click="updateDay(dateFriTwo)">Friday, {{dateFriTwo}}<span></a></div>
             <div class="job" ng-repeat="job in friTwoJobs | orderBy: [compareComplete, compareHardDate]" ng-class="{'harddate': job.harddate, 'complete': job.complete, 'inprogress': job.inprogress}">
-              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div>C<input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
-              <div>IP<input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
+              <a href="#edit"><span ng-click="updateThis(job.id)">{{job.company}} ({{job.pieces}})</span></a> <div class="deleteedit"><div class = "greyInput"><input type="checkbox" ng-model="job.complete" ng-checked="job.complete" ng-change="jobComplete(job.id)"></div>
+              <div class="purpleInput"><input type="checkbox" ng-model="job.inprogress" ng-checked="job.inprogress" ng-change="jobInProgress(job.id)"></div></div>
             </div>
           </div>
         </div>

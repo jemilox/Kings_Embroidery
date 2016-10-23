@@ -181,6 +181,7 @@ app.post('/editcomplete', urlencodedParser, function (req, res) {
     }else{
       console.log('connected to db in edit');
       client.query('UPDATE jobs SET complete = $1 WHERE id = $2', [complete, id]);
+      client.query('UPDATE jobs SET inprogress = false WHERE id = $1', [id]);
       io.emit('pingRefresh');
       done();
       res.send({success: true});
@@ -199,6 +200,7 @@ app.post('/editinprogress', urlencodedParser, function (req, res) {
     }else{
       console.log('connected to db in edit inprogress');
       client.query('UPDATE jobs SET inprogress = $1 WHERE id = $2', [inprogress, id]);
+      client.query('UPDATE jobs SET complete = false WHERE id = $1', [id]);
       io.emit('pingRefresh');
       done();
       res.send({success: true});
