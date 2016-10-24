@@ -33,6 +33,17 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
     }
   };
 
+  $scope.pastJobsfunction = function (thisJob) {
+    var thisJobId = thisJob.id;
+    var parsed = Date.parse(thisJob.duedate);
+    var beforeMonday = Date.parse($scope.dateMonOne);
+    if (!thisJob.complete){
+      if(parsed < beforeMonday){
+        $scope.monOneJobs.push(thisJob);
+      }
+    }
+  };
+
   $scope.getAll = function () {
     console.log('in getall');
     //clear data
@@ -98,6 +109,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
             break;
           default:
             $scope.futureJobsfunction($scope.alljobs[i]);
+            $scope.pastJobsfunction($scope.alljobs[i]);
         }//end switch
       }//end for loop
 
