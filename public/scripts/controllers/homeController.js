@@ -34,12 +34,17 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
   };
 
   $scope.pastJobsfunction = function (thisJob) {
+    console.log('in past jobs function', thisJob);
     var thisJobId = thisJob.id;
     var parsed = Date.parse(thisJob.duedate);
     var beforeMonday = Date.parse($scope.dateMonOne);
     if (!thisJob.complete){
       if(parsed < beforeMonday){
-        $scope.monOneJobs.push(thisJob);
+        factory.changeCurrentJobId(thisJobId);
+        factory.editDate($scope.dateMonOne).then(function () {
+          $scope.monOneJobs.push(thisJob);
+        });
+
       }
     }
   };
