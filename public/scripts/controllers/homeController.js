@@ -8,45 +8,21 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
   //weekOffset 0 means current week, negative is previous, positive is future
   var weekOffset = 0;
 
-  $scope.dateMonOne = moment().day(1).format('M/D/YY');
-  $scope.dateTuesOne = moment().day(2).format('M/D/YY');
-  $scope.dateWedOne = moment().day(3).format('M/D/YY');
-  $scope.dateThursOne = moment().day(4).format('M/D/YY');
-  $scope.dateFriOne = moment().day(5).format('M/D/YY');
-  $scope.dateMonTwo = moment().day(8).format('M/D/YY');
-  $scope.dateTuesTwo = moment().day(9).format('M/D/YY');
-  $scope.dateWedTwo = moment().day(10).format('M/D/YY');
-  $scope.dateThursTwo = moment().day(11).format('M/D/YY');
-  $scope.dateFriTwo = moment().day(12).format('M/D/YY');
 
   $scope.changeWeekStatus = function (number) {
     console.log('in changeWeekStatus click');
     weekOffset = weekOffset + number;
-    if (weekOffset !== 0){
-      console.log('weekOffset is negative', weekOffset);
-      $scope.dateMonOne = moment().day(1 + weekOffset * 14).format('M/D/YY');
-      $scope.dateTuesOne = moment().day(2 + weekOffset * 14).format('M/D/YY');
-      $scope.dateWedOne = moment().day(3 + weekOffset * 14).format('M/D/YY');
-      $scope.dateThursOne = moment().day(4 + weekOffset * 14).format('M/D/YY');
-      $scope.dateFriOne = moment().day(5 + weekOffset * 14).format('M/D/YY');
-      $scope.dateMonTwo = moment().day(8 + weekOffset * 14).format('M/D/YY');
-      $scope.dateTuesTwo = moment().day(9 + weekOffset * 14).format('M/D/YY');
-      $scope.dateWedTwo = moment().day(10 + weekOffset * 14).format('M/D/YY');
-      $scope.dateThursTwo = moment().day(11 + weekOffset * 14).format('M/D/YY');
-      $scope.dateFriTwo = moment().day(12 + weekOffset * 14).format('M/D/YY');
-    } else {
-      console.log('weekOffset is now', weekOffset);
-      $scope.dateMonOne = moment().day(1).format('M/D/YY');
-      $scope.dateTuesOne = moment().day(2).format('M/D/YY');
-      $scope.dateWedOne = moment().day(3).format('M/D/YY');
-      $scope.dateThursOne = moment().day(4).format('M/D/YY');
-      $scope.dateFriOne = moment().day(5).format('M/D/YY');
-      $scope.dateMonTwo = moment().day(8).format('M/D/YY');
-      $scope.dateTuesTwo = moment().day(9).format('M/D/YY');
-      $scope.dateWedTwo = moment().day(10).format('M/D/YY');
-      $scope.dateThursTwo = moment().day(11).format('M/D/YY');
-      $scope.dateFriTwo = moment().day(12).format('M/D/YY');
-    }
+    $scope.dateMonOne = moment().day(1 + weekOffset * 14).format('M/D/YY');
+    $scope.dateTuesOne = moment().day(2 + weekOffset * 14).format('M/D/YY');
+    $scope.dateWedOne = moment().day(3 + weekOffset * 14).format('M/D/YY');
+    $scope.dateThursOne = moment().day(4 + weekOffset * 14).format('M/D/YY');
+    $scope.dateFriOne = moment().day(5 + weekOffset * 14).format('M/D/YY');
+    $scope.dateMonTwo = moment().day(8 + weekOffset * 14).format('M/D/YY');
+    $scope.dateTuesTwo = moment().day(9 + weekOffset * 14).format('M/D/YY');
+    $scope.dateWedTwo = moment().day(10 + weekOffset * 14).format('M/D/YY');
+    $scope.dateThursTwo = moment().day(11 + weekOffset * 14).format('M/D/YY');
+    $scope.dateFriTwo = moment().day(12 + weekOffset * 14).format('M/D/YY');
+
     $scope.getAll();
   };
 
@@ -227,6 +203,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
    }
  };
   //run get all at page load
+  $scope.changeWeekStatus(0);
   $scope.getAll();
 
   socket.on('pingRefresh', function () {
