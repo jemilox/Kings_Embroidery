@@ -4,8 +4,23 @@ myApp.constant('moment', moment);
 var socket = io();
 
 myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q', function ($scope, $http, moment, factory, $q){
-  console.log('in homeController');
+  console.log('in homeController', moment().day(-13).format('M/D/YY'));
+  //status 0 means current week, negative is previous, positive is future
+  var status = 0;
 
+
+
+  $scope.changeWeekStatus = function (number) {
+    console.log('in changeWeekStatus click');
+    status = status + number;
+    if (status < 0 ){
+      console.log('status is negative', status);
+    } else if (status === 0){
+      console.log('status is now', status);
+    } else {
+      console.log('status is positive', status);
+    }
+  };
 
   $scope.dropDownContent = false;
 
@@ -34,7 +49,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
   };
 
   $scope.pastJobsfunction = function (thisJob) {
-    console.log('in past jobs function', thisJob);
+    //console.log('in past jobs function', thisJob);
     var thisJobId = thisJob.id;
     var parsed = Date.parse(thisJob.duedate);
     var beforeMonday = Date.parse($scope.dateMonOne);
@@ -51,6 +66,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
 
   $scope.getAll = function () {
     console.log('in getall');
+    $scope.changeWeekStatus(0);
     //clear data
     $scope.alljobs = [];
     factory.getAll().then(function(results){
@@ -158,37 +174,6 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
 
   $scope.compareDueDate = function (arg) {
     return Date.parse(arg.duedate);
-  };
-
-  $scope.windowClick = function(event) {
-    console.log('in window click');
-    if ($scope.dropDownContent){
-      console.log('mew');
-      $scope.dropDownContent = false;
-    }
-
-  };
-
-  var droppedDown = false;
-
-  $scope.dropDown = function () {
-    var timer = function(){
-      return $q(function(resolve, reject){
-        setTimeout(function () {
-          resolve();
-        }, 50);
-      });
-    };
-    timer().then(function(){
-      if (droppedDown) {
-        droppedDown = false;
-      }
-      else {
-        $scope.dropDownContent = true;
-        droppedDown = true;
-      }
-      console.log('in dropDown click');
-    });
   };
 
   // //complete function update complete status
