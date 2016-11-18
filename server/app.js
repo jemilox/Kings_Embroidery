@@ -323,4 +323,9 @@ app.get('/search', function (req, res) {
   });//end pg connect
 });//end app.get
 
+app.get('/searchbydate', function (req, res) {
+  console.log('in /searchbydate', req.query.firstDate, req.query.secondDate);
+
+});
+
 app.use(express.static('public'));

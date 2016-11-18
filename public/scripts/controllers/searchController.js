@@ -29,6 +29,20 @@ $scope.searchJobs = function () {
     });
   }else if ($scope.dateSearchFirst === undefined || $scope.dateSearchSecond === undefined){
     alert('Date missing');
+  }else if($scope.searchText === undefined && $scope.dateSearchFirst !== undefined && $scope.dateSearchSecond !== undefined){
+    //search by date only
+    console.log('in search by date only');
+    factory.getAll().then(function (response) {
+      console.log('in response from getAll');
+      $scope.tripleSearchedJobs = response.data;
+      $scope.tripleSearchedJobs = $scope.tripleSearchedJobs.map(function (index) {
+        var m = moment.utc(index.duedate).format('M/D/YY');
+        return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate, notes: index.notes};
+      });//end map function
+      console.log($scope.tripleSearchedJobs);
+      $scope.tripleSearchedJobs = $scope.tripleSearchedJobs.filter($scope.filterByDate);
+      console.log('after map function $scope.searchedJobs', $scope.tripleSearchedJobs);
+    });
   }else{
     factory.searchForJobs(toSend).then(function (results) {
 
@@ -40,9 +54,9 @@ $scope.searchJobs = function () {
         var m = moment.utc(index.duedate).format('M/D/YY');
         return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate, notes: index.notes};
       });//end map function
-      //console.log($scope.alljobs);
-      $scope.tripleSearchedJobs = $scope.tripleSearchedJobs.filter($scope.filterByDate)
-      console.log('after map function $scope.searchedJobs', $scope.tripleSearchedJob);
+      console.log($scope.tripleSearchedJobs);
+      $scope.tripleSearchedJobs = $scope.tripleSearchedJobs.filter($scope.filterByDate);
+      console.log('after map function $scope.searchedJobs', $scope.tripleSearchedJobs);
       //console.log('search parse', Date.parse($scope.searchedJobs[0].duedate));
     });
   }
