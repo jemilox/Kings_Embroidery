@@ -5,7 +5,6 @@ myApp.factory('factory', ['$http', function($http){
   var currentDay = "";
 
   var getAll = function () {
-
     return $http({
       method: 'GET',
       url: '/all',
@@ -13,7 +12,6 @@ myApp.factory('factory', ['$http', function($http){
   };
 
   var getEmployees = function () {
-
     return $http({
       method: 'GET',
       url: '/employees'
@@ -21,14 +19,12 @@ myApp.factory('factory', ['$http', function($http){
   };
 
   var deletejob = function (objectToSend) {
-
     return $http({
       method: 'DELETE',
       url: '/delete',
       data: objectToSend,
       headers: {"Content-Type": "application/json;charset=utf-8"}
     });
-
   };
 
   var changeCurrentJobId = function (id) {
@@ -42,12 +38,10 @@ myApp.factory('factory', ['$http', function($http){
   };
 
   var editPieces = function (number) {
-
     var objectToSend = {
       id: currentJobId,
       pieces: number
     };
-
     return $http({
       method: 'POST',
       url: '/edit',
@@ -56,12 +50,10 @@ myApp.factory('factory', ['$http', function($http){
   };
 
   var editName = function (number) {
-
     var objectToSend = {
       id: currentJobId,
       employeeid: number
     };
-
     return $http({
       method: 'POST',
       url: '/editname',
@@ -75,7 +67,6 @@ myApp.factory('factory', ['$http', function($http){
       id: currentJobId,
       harddate: number
     };
-
     return $http({
       method: 'POST',
       url: '/editharddate',
@@ -84,12 +75,10 @@ myApp.factory('factory', ['$http', function($http){
   };
 
   var editComplete = function (number) {
-
     var objectToSend = {
       id: currentJobId,
       complete: number
     };
-
     return $http({
       method: 'POST',
       url: '/editcomplete',
@@ -98,12 +87,10 @@ myApp.factory('factory', ['$http', function($http){
   };
 
   var editInProgress = function (number) {
-
     var objectToSend = {
       id: currentJobId,
       inprogress: number
     };
-
     return $http({
       method: 'POST',
       url: '/editinprogress',
@@ -112,12 +99,10 @@ myApp.factory('factory', ['$http', function($http){
   };
 
   var editNotes = function (number) {
-
     var objectToSend = {
       id: currentJobId,
       notes: number
     };
-
     return $http({
       method: 'POST',
       url: '/editnotes',
@@ -126,12 +111,10 @@ myApp.factory('factory', ['$http', function($http){
   };
 
   var editCompany = function (number) {
-
     var objectToSend = {
       id: currentJobId,
       company: number
     };
-
     return $http({
       method: 'POST',
       url: '/editcompany',
@@ -140,12 +123,10 @@ myApp.factory('factory', ['$http', function($http){
   };
 
   var editDate = function (number) {
-
     var objectToSend = {
       id: currentJobId,
       duedate: number
     };
-
     return $http({
       method: 'POST',
       url: '/editdate',
@@ -154,7 +135,6 @@ myApp.factory('factory', ['$http', function($http){
   };
 
   var searchForJobs = function (search) {
-
     return $http({
       method: 'GET',
       url: '/search?search=' + search
@@ -162,12 +142,10 @@ myApp.factory('factory', ['$http', function($http){
   };
 
   var archiveEmployee = function (number) {
-
     var objectToSend = {
       id: number,
       archived: true
     };
-
     return $http({
       method: 'POST',
       url: '/archive',
@@ -199,5 +177,4 @@ myApp.factory('factory', ['$http', function($http){
     archiveEmployee: archiveEmployee,
     editInProgress: editInProgress
   };
-
 }]);

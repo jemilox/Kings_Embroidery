@@ -69,7 +69,7 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
       $scope.alljobs = results.data;
       $scope.alljobs = $scope.alljobs.map(function (index) {
         var m = moment.utc(index.duedate).format('M/D/YY');
-        return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate, inprogress: index.inprogress};
+        return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate, inprogress: index.inprogress, notes: index.notes};
       });//end map function
       //console.log($scope.alljobs);
 

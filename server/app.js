@@ -6,14 +6,15 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded( {extended: false});
 var portDecision = process.env.PORT || 3000;
 var pg = require('pg');
-var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/jobstwo';
+var connectionString = 'postgres://:5432/kings';
+//var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/jobstwo';
 var io = require('socket.io')(http);
 
 app.use(bodyParser.json());
 
 http.listen( portDecision, function () {
   console.log(portDecision + " is up!");
-});//end server up
+});
 
 app.get('/', urlencodedParser, function (req, res) {
   console.log('base url hit');
@@ -25,9 +26,9 @@ app.get('/', urlencodedParser, function (req, res) {
 app.get('/all', function (req, res) {
   console.log('in get /all');
   pg.connect(connectionString, function (err, client, done) {
-      if (err){
+      if (err) {
         console.log(err);
-      }else{
+      } else {
         var alljobs = [];
         var queryResults = client.query('SELECT * FROM jobs LEFT JOIN employees ON jobs.employeeid=employees.empid');
         //console.log(queryResults);
@@ -47,9 +48,9 @@ app.get('/all', function (req, res) {
 app.get('/employees', function (req, res) {
   console.log('in get /employees');
   pg.connect(connectionString, function (err, client, done) {
-      if (err){
+      if (err) {
         console.log(err);
-      }else{
+      } else {
         var allemployees = [];
         var queryResults = client.query('SELECT * FROM employees');
         //console.log(queryResults);

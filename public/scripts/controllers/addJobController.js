@@ -1,7 +1,7 @@
 
 myApp.constant('moment', moment);
 
-myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', function ($scope, factory, $http, moment) {
+myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', function($scope, factory, $http, moment) {
   console.log('in addJobController');
   //clear scope.success for ng-show
   $scope.success = false;
@@ -15,8 +15,7 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
   // var c =moment().day(5).format('DD MM');
   // console.log(c);
   //get all employees
-  var getEmployees = function () {
-
+  var getEmployees = function() {
     return factory.getEmployees().then(function (results) {
       //save get from factory into allJobs
       $scope.allEmployees = [];
@@ -34,7 +33,7 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
   };
 
   //edit name text
-  $scope.archiveEmployee = function () {
+  $scope.archiveEmployee = function() {
     console.log('archiveEmployee', $scope.editArchivemodel);
     for (let i = 0; i < $scope.allEmployees.length; i++) {
       if($scope.allEmployees[i].name === $scope.editArchivemodel){
@@ -48,7 +47,7 @@ myApp.controller('addJobController', ['$scope', 'factory', '$http', 'moment', fu
     getEmployees();
   };
 
-  $scope.addjob = function () {
+  $scope.addjob = function() {
     console.log('in addjob');
     console.log('in addjob', $scope.employeeModel);
 
