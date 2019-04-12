@@ -24,7 +24,6 @@ app.get('/', urlencodedParser, function (req, res) {
 
 
 app.get('/all', function (req, res) {
-  console.log('in get /all');
   pg.connect(connectionString, function (err, client, done) {
       if (err) {
         console.log(err);
@@ -46,7 +45,6 @@ app.get('/all', function (req, res) {
 });//end app.get
 
 app.get('/employees', function (req, res) {
-  console.log('in get /employees');
   pg.connect(connectionString, function (err, client, done) {
       if (err) {
         console.log(err);
@@ -68,8 +66,6 @@ app.get('/employees', function (req, res) {
 });//end app.get
 
 app.post('/newjob', urlencodedParser, function (req, res) {
-  console.log('in .post newjob');
-  console.log('req.body', req.body.inprogress);
   var company = req.body.company;
   var duedate = req.body.duedate;
   var pieces = req.body.pieces;
@@ -78,12 +74,10 @@ app.post('/newjob', urlencodedParser, function (req, res) {
   var notes = req.body.notes;
   var employee = req.body.employeeid;
   var inprogress = req.body.inprogress;
-  console.log(company, duedate, pieces, employee, inprogress);
   pg.connect(connectionString, function (err, client, done) {
       if (err){
         console.log(err);
       }else{
-        console.log('connected to database');
         var queryResults = client.query('INSERT INTO jobs (company, duedate, pieces, complete, harddate, notes, employeeid, inprogress) VALUES($1, $2, $3, $4, $5, $6, $7, $8)', [company, duedate, pieces, complete, harddate, notes, employee, inprogress]);
         queryResults.on('end', function () {
           io.emit('pingRefresh');
@@ -97,15 +91,11 @@ app.post('/newjob', urlencodedParser, function (req, res) {
 });
 
 app.post('/newemployee', urlencodedParser, function (req, res) {
-  console.log('in .post newemployee');
-  console.log('req.body', req.body.name);
   var name = req.body.name;
-  console.log(name);
   pg.connect(connectionString, function (err, client, done) {
       if (err){
         console.log(err);
       }else{
-        console.log('connected to database');
         var queryResults = client.query('INSERT INTO employees (name, archived) VALUES($1, $2)', [name, false]);
         queryResults.on('end', function () {
           done();
@@ -118,14 +108,11 @@ app.post('/newemployee', urlencodedParser, function (req, res) {
 });
 
 app.delete('/delete', urlencodedParser, function (req, res) {
-  console.log('in delete');
-  console.log(req.body.id);
   var id = req.body.id;
   pg.connect(connectionString, function (err, client, done) {
     if (err){
       console.log(err);
     }else{
-      console.log('connected to database in delete');
       client.query('DELETE from jobs WHERE id = $1', [id]);
       io.emit('pingRefresh');
       done();
@@ -135,15 +122,12 @@ app.delete('/delete', urlencodedParser, function (req, res) {
 });
 //edit pieces
 app.post('/edit', urlencodedParser, function (req, res) {
-  console.log('in edit post');
-  console.log(req.body);
   var id = req.body.id;
   var pieces = req.body.pieces;
   pg.connect(connectionString, function (err, client, done) {
     if (err){
       console.log(err);
     }else{
-      console.log('connected to db in edit');
       client.query('UPDATE jobs SET pieces = $1 WHERE id = $2', [pieces, id]);
       io.emit('pingRefresh');
       done();
@@ -154,15 +138,12 @@ app.post('/edit', urlencodedParser, function (req, res) {
 
 //edit notes
 app.post('/editnotes', urlencodedParser, function (req, res) {
-  console.log('in edit notes post');
-  console.log(req.body);
   var id = req.body.id;
   var notes = req.body.notes;
   pg.connect(connectionString, function (err, client, done) {
     if (err){
       console.log(err);
     }else{
-      console.log('connected to db in edit');
       client.query('UPDATE jobs SET notes = $1 WHERE id = $2', [notes, id]);
       io.emit('pingRefresh');
       done();
@@ -172,15 +153,12 @@ app.post('/editnotes', urlencodedParser, function (req, res) {
 });//end edit notes
 //edit complete
 app.post('/editcomplete', urlencodedParser, function (req, res) {
-  console.log('in edit post complete');
-  console.log(req.body);
   var id = req.body.id;
   var complete = req.body.complete;
   pg.connect(connectionString, function (err, client, done) {
     if (err){
       console.log(err);
     }else{
-      console.log('connected to db in edit');
       client.query('UPDATE jobs SET complete = $1 WHERE id = $2', [complete, id]);
       client.query('UPDATE jobs SET inprogress = false WHERE id = $1', [id]);
       io.emit('pingRefresh');
@@ -191,15 +169,12 @@ app.post('/editcomplete', urlencodedParser, function (req, res) {
 });//end edit complete
 
 app.post('/editinprogress', urlencodedParser, function (req, res) {
-  console.log('in edit post inprogress');
-  console.log(req.body);
   var id = req.body.id;
   var inprogress = req.body.inprogress;
   pg.connect(connectionString, function (err, client, done) {
     if (err){
       console.log(err);
     }else{
-      console.log('connected to db in edit inprogress');
       client.query('UPDATE jobs SET inprogress = $1 WHERE id = $2', [inprogress, id]);
       client.query('UPDATE jobs SET complete = false WHERE id = $1', [id]);
       io.emit('pingRefresh');
@@ -212,15 +187,12 @@ app.post('/editinprogress', urlencodedParser, function (req, res) {
 
 //edit harddate
 app.post('/editharddate', urlencodedParser, function (req, res) {
-  console.log('in edit post harddate');
-  console.log(req.body);
   var id = req.body.id;
   var harddate = req.body.harddate;
   pg.connect(connectionString, function (err, client, done) {
     if (err){
       console.log(err);
     }else{
-      console.log('connected to db in edit');
       client.query('UPDATE jobs SET harddate = $1 WHERE id = $2', [harddate, id]);
       io.emit('pingRefresh');
       done();
@@ -230,15 +202,12 @@ app.post('/editharddate', urlencodedParser, function (req, res) {
 });//end edit harddate
 
 app.post('/editcompany', urlencodedParser, function (req, res) {
-  console.log('in edit post');
-  console.log(req.body);
   var id = req.body.id;
   var company = req.body.company;
   pg.connect(connectionString, function (err, client, done) {
     if (err){
       console.log(err);
     }else{
-      console.log('connected to db in edit');
       client.query('UPDATE jobs SET company = $1 WHERE id = $2', [company, id]);
       io.emit('pingRefresh');
       done();
@@ -248,15 +217,12 @@ app.post('/editcompany', urlencodedParser, function (req, res) {
 });
 
 app.post('/editdate', urlencodedParser, function (req, res) {
-  console.log('in edit post');
-  console.log(req.body);
   var id = req.body.id;
   var duedate = req.body.duedate;
   pg.connect(connectionString, function (err, client, done) {
     if (err){
       console.log(err);
     }else{
-      console.log('connected to db in edit');
       client.query('UPDATE jobs SET duedate = $1 WHERE id = $2', [duedate, id]);
       io.emit('pingRefresh');
       done();
@@ -266,15 +232,12 @@ app.post('/editdate', urlencodedParser, function (req, res) {
 });
 
 app.post('/editname', urlencodedParser, function (req, res) {
-  console.log('in edit post');
-  console.log(req.body);
   var id = req.body.id;
   var employeeid = req.body.employeeid;
   pg.connect(connectionString, function (err, client, done) {
     if (err){
       console.log(err);
     }else{
-      console.log('connected to db in edit');
       client.query('UPDATE jobs SET employeeid = $1 WHERE id = $2', [employeeid, id]);
       io.emit('pingRefresh');
       done();
@@ -284,14 +247,11 @@ app.post('/editname', urlencodedParser, function (req, res) {
 });
 
 app.post('/archive', urlencodedParser, function (req, res) {
-  console.log('in archive post');
-  console.log(req.body);
   var id = req.body.id;
   pg.connect(connectionString, function (err, client, done) {
     if (err){
       console.log(err);
     }else{
-      console.log('connected to db in edit');
       client.query('UPDATE employees SET archived = $1 WHERE empid = $2', [true, id]);
       io.emit('pingRefresh');
       done();
@@ -302,7 +262,6 @@ app.post('/archive', urlencodedParser, function (req, res) {
 
 
 app.get('/search', function (req, res) {
-  console.log('in get /search');
   pg.connect(connectionString, function (err, client, done) {
       if (err){
         console.log(err);

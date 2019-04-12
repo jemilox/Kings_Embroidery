@@ -3,7 +3,6 @@
 myApp.constant('moment', moment);
 
 myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', function ($scope, $http, moment, factory){
-  console.log('in editJobController');
   //this is the job that was selected from another view and received from factory
   var jobId = factory.currentJobId();
   //save for other functions that need to change the job
@@ -90,22 +89,18 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
   };
   //show edit fields if clicked
   $scope.editButtonsCo = function () {
-    console.log('in editButtonsCo');
     $scope.editCo = true;
   };
   //show edit fields if clicked
   $scope.editButtonsPi = function () {
-    console.log('in editButtonsPi');
     $scope.editPi = true;
   };
   //show edit fields if clicked
   $scope.editButtonsDate = function () {
-    console.log('in editButtonsDate');
     $scope.editD = true;
   };
   //show edit fields if clicked
   $scope.editButtonsName = function () {
-    console.log('in editButtonsName');
     $scope.editNam = true;
   };
   //edit notes text
@@ -113,7 +108,6 @@ myApp.controller('editJobController', ['$scope', '$http', 'moment', 'factory', f
     console.log('edit this', $scope.editNotesmodel);
 
     factory.editNotes($scope.editNotesmodel).then(function (results) {
-      console.log('made it back from edit');
       $scope.editN = false;
     }).then( function(){
       getAll();
