@@ -1,5 +1,4 @@
 myApp.factory('factory', ['$http', function($http){
-  console.log('in factory');
 
   var currentJobId = "";
   var currentDay = "";
@@ -62,7 +61,6 @@ myApp.factory('factory', ['$http', function($http){
   };
 
   var editHarddate = function (number) {
-    console.log(number);
     var objectToSend = {
       id: currentJobId,
       harddate: number
@@ -127,6 +125,7 @@ myApp.factory('factory', ['$http', function($http){
       id: currentJobId,
       duedate: number
     };
+    console.log('setting date for currentJobId ', currentJobId, ' to: ', number);
     return $http({
       method: 'POST',
       url: '/editdate',

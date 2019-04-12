@@ -10,7 +10,6 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
 
 
   $scope.changeWeekStatus = function (number) {
-    console.log('in changeWeekStatus click');
     weekOffset = weekOffset + number;
     $scope.dateMonOne = moment().day(1 + weekOffset * 14).format('M/D/YY');
     $scope.dateTuesOne = moment().day(2 + weekOffset * 14).format('M/D/YY');
@@ -59,19 +58,15 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
   };
 
   $scope.getAll = function () {
-    console.log('in getall');
     //clear data
     $scope.alljobs = [];
     factory.getAll().then(function(results){
-      console.log('made it to then');
-      //console.log('results.success', results.data);
       //array of alljobs from db
       $scope.alljobs = results.data;
       $scope.alljobs = $scope.alljobs.map(function (index) {
         var m = moment.utc(index.duedate).format('M/D/YY');
         return {id: index.id, company: index.company, duedate: m, pieces: index.pieces, complete: index.complete, harddate: index.harddate, inprogress: index.inprogress, notes: index.notes};
-      });//end map function
-      //console.log($scope.alljobs);
+      });
 
           $scope.monOneJobs = [];
           $scope.tuesOneJobs = [];
@@ -126,34 +121,27 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
             $scope.pastJobsfunction($scope.alljobs[i]);
         }//end switch
       }//end for loop
-
-      console.log($scope.monOneJobs);
     });//end then
   };//end getAll function
 
   //delete job
   $scope.delete = function (id) {
-    console.log('in delete', id);
-
     var objectToSend = {
       id: id
     };
 
     factory.deletejob(objectToSend).then(function (results) {
-      console.log('made it to results!');
       $scope.getAll();
     });
   };//end delete
 
   //go to edit, tell which job to edit
   $scope.updateThis = function (id) {
-    console.log('ng click works');
     factory.changeCurrentJobId(id);
   };
 
   //got to factory, tell which is currentDay
   $scope.updateDay = function (id) {
-    console.log('updateDay click works');
     factory.changeCurrentDay(id);
   };
 
@@ -171,14 +159,11 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
 
   // //complete function update complete status
   $scope.jobComplete = function (id) {
-    console.log('in jobComplete click', id);
     factory.changeCurrentJobId(id);
     for (var k = 0; k < $scope.alljobs.length; k++) {
       if($scope.alljobs[k].id == id){
-        console.log($scope.alljobs[k]);
         var sendtrue = $scope.alljobs[k].complete;
         factory.editComplete(sendtrue).then(function () {
-          console.log('made it to then');
           $scope.getAll();
 
         });
@@ -188,15 +173,11 @@ myApp.controller('homeController', ['$scope', '$http', 'moment', 'factory', '$q'
   };
 
  $scope.jobInProgress = function (jobid) {
-   console.log('in jobInProgress', jobid);
    factory.changeCurrentJobId(jobid);
    for (var k = 0; k < $scope.alljobs.length; k++) {
      if($scope.alljobs[k].id == jobid){
-       console.log($scope.alljobs[k]);
        var sendtrue = $scope.alljobs[k].inprogress;
-       console.log('sendtrue', sendtrue);
        factory.editInProgress(sendtrue).then(function () {
-         console.log('made it to then');
          $scope.getAll();
        });
      }
