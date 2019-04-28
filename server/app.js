@@ -6,8 +6,8 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded( {extended: false});
 var portDecision = process.env.PORT || 3000;
 var pg = require('pg');
-var connectionString = 'postgres://:5432/kings';
-//var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/jobstwo';
+//var connectionString = 'postgres://:5432/kings';
+var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/jobstwo';
 var io = require('socket.io')(http);
 
 app.use(bodyParser.json());
