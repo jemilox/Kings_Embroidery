@@ -13,6 +13,7 @@ CREATE TABLE jobs (
 	complete BOOLEAN,
 	harddate BOOLEAN,
 	notes VARCHAR(200),
+	inprogress BOOLEAN,
 	employeeid INT REFERENCES employees (empid)
 	);
 
