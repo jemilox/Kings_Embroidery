@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.5.8",
+    "angular": "^1.8.0",
     "angular-route": "^1.5.8",
     "angular-router": "0.0.2",
     "body-parser": "^1.15.2",
